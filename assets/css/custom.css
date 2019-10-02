@@ -1,0 +1,96 @@
+
+.login-custom-back {
+    background-image: url("/svg/login.svg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-attachment: fixed;*/
+    min-height: 95vh;
+    /*overflow: hidden;*/
+}
+
+.login-custom-back .navbar-custom, .login-custom-back .navbar-brand {
+    color: #fff !important;
+    font-weight: 700;
+    background-color: #092330;
+}
+
+.login-custom-back .custom-menu, .login-custom-back .nav-link {
+    color: #fff !important;
+}
+
+.custom-login {
+    background-color: rgba(255, 255, 255, .4);
+}
+
+.login-custom-back .credits {
+    position: relative;
+    bottom: -212px;
+    font-size: .9em;
+    color: #fff;
+    display: block;
+}
+
+.copyright {
+    margin: 0 auto;
+}
+
+.login-custom-back .heart {
+    color: #a3ddf5;
+    animation: n 1s ease infinite
+}
+
+@keyframes n {
+    0% {
+        transform: scale(.75)
+    }
+    20% {
+        transform: scale(1)
+    }
+    40% {
+        transform: scale(.75)
+    }
+    60% {
+        transform: scale(1)
+    }
+    80% {
+        transform: scale(.75)
+    }
+    to {
+        transform: scale(.75)
+    }
+}
+
+.card label.big {
+    font-size: 1em;
+    color: #777;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    font-weight: bold;
+}
+
+.ts-logout:hover {
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 999px 0 0 999px;
+    padding-left: 25px !important;
+}
+
+.ts-width-full {
+    width: 100% !important;
+}
+
+.ts-border-right {
+    border-right-width: 4px !important;
+}
+
+.ts-border-bottom {
+    border-bottom-width: 4px !important;
+}
+
+.oct-underline {
+    text-decoration: underline;
+}
