@@ -75,21 +75,54 @@ function shed($id){
    }
 }
 
-function calculate_concentrate($dob){
+function calculate_food_ratio($gender,$dob){
+
   $age = age($dob);
-  if($age > 3){
+  $gender_c = gender($gender);
+
+  if($age > 3 && $gender_c == 'female'){
+  
     $type = "milking_cow";
-   
+    return get_food_ratio($type);
+  
+  }elseif($age > 3 && $gender_c == 'male'){
+  
+    $type = "bull";
+    return get_food_ratio($type);
+  
   }elseif($age < 3 && $age > 2){
-   
-  }elseif($age<1){
+
+    $type = "cattle";
+    return get_food_ratio($type);
+
+  }elseif($age < 2 && $age > 1){
     
+    $type = "heifer";
+    return get_food_ratio($type);
+
+  }elseif($age < 1){
+
+    $type = "calf";
+    return get_food_ratio($type);
+
   }
 }
 
 function get_food_ratio($type){
   $CI =& get_instance();
-  $query = $CI->db->query("SELECT * FROM ratio WHERE ");
+  $query = $CI->db->query("SELECT * FROM ratio WHERE cow_type = '$type' LIMIT 1");
+  if($query->num_rows() > 0){
+    return $query->result();
+   }
+}
+
+function gender($gender)
+{
+    $CI =& get_instance();
+    $query = $CI->db->query("SELECT name FROM gender WHERE id = $gender");
+    foreach ($query->result() as  $value) {
+      return $value->name;
+    }
 }
 
 ?>

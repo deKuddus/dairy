@@ -75,30 +75,54 @@
                                          <td>44</td>  
                                          <td>0</td>
                                          <td>
-                                            <?php echo calculate_concentrate($cow->dob); ?>
+                                            <?php  
+                                            $food_data = calculate_food_ratio($cow->gender,$cow->dob);
+                                            $age = age($cow->dob);
+
+                                             ?>
                                          0.40</td>  
                                          <td>
                                            <div class="form-check">
                                                 <label class="big form-check-label">
-                                                    <input class="form-check-input checkbox-1" type="checkbox" value="0.40">
+                                                    <input class="form-check-input checkbox-1" type="checkbox" value="0.00">
                                                     <span class="form-check-sign"><span class="check"></span></span>
                                                 </label>
                                             </div>
                                          </td>  
-                                         <td>0.20</td> 
+                                         <td>
+                                            <?php  
+                                                $food_data = calculate_food_ratio($cow->gender,$cow->dob);
+                                                $age = age($cow->dob);
+                                                
+                                                foreach ($food_data as $_hay) {}
+                                                $c_hay = ($_hay->hay *100) /$cow->weight;
+                                                echo number_format((float)$c_hay, 2, '.', '');
+
+                                            ?>    
+                                         </td> 
                                          <td>
                                            <div class="form-check">
                                                 <label class="big form-check-label ">
-                                                    <input class="form-check-input  checkbox-2" type="checkbox" value="0.20">
+                                                    <input class="form-check-input  checkbox-2" type="checkbox" value="<?php echo $c_hay; ?>">
                                                     <span class="form-check-sign"><span class="check"></span></span>
                                                 </label>
                                             </div>
                                          </td>  
-                                         <td>0.10</td>
+                                         <td>
+                                            <?php  
+                                                $food_data = calculate_food_ratio($cow->gender,$cow->dob);
+                                                $age = age($cow->dob);
+                                                
+                                                foreach ($food_data as $grass) {}
+                                                $green_f = ($grass->green_fooder *100) /$cow->weight;
+                                                echo number_format((float)$green_f, 2, '.', '');
+
+                                            ?>
+                                        </td>
                                          <td>
                                            <div class="form-check">
                                                 <label class="big form-check-label">
-                                                    <input class="form-check-input  checkbox-3" type="checkbox" value="0.10">
+                                                    <input class="form-check-input  checkbox-3" type="checkbox" value="<?php echo $green_f; ?>">
                                                     <span class="form-check-sign"><span class="check"></span></span>
                                                 </label>
                                             </div>
