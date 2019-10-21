@@ -74,37 +74,46 @@
                                          </td>  
                                          <td>44</td>  
                                          <td>0</td>
-                                         <td>0.60</td>  
+                                         <td>
+                                            <?php echo calculate_concentrate($cow->dob); ?>
+                                         0.40</td>  
                                          <td>
                                            <div class="form-check">
                                                 <label class="big form-check-label">
-                                                    <input class="form-check-input checkbox-1" type="checkbox" value="">
+                                                    <input class="form-check-input checkbox-1" type="checkbox" value="0.40">
                                                     <span class="form-check-sign"><span class="check"></span></span>
                                                 </label>
                                             </div>
                                          </td>  
-                                         <td>0.60</td> 
+                                         <td>0.20</td> 
                                          <td>
                                            <div class="form-check">
                                                 <label class="big form-check-label ">
-                                                    <input class="form-check-input  checkbox-2" type="checkbox" value="">
+                                                    <input class="form-check-input  checkbox-2" type="checkbox" value="0.20">
                                                     <span class="form-check-sign"><span class="check"></span></span>
                                                 </label>
                                             </div>
                                          </td>  
-                                         <td>0.60</td>
+                                         <td>0.10</td>
                                          <td>
                                            <div class="form-check">
                                                 <label class="big form-check-label">
-                                                    <input class="form-check-input  checkbox-3" type="checkbox" value="">
+                                                    <input class="form-check-input  checkbox-3" type="checkbox" value="0.10">
                                                     <span class="form-check-sign"><span class="check"></span></span>
                                                 </label>
                                             </div>
                                          </td>  
-                                         <td>0.60</td> 
-                                         <td><input type="text" style="width: 70px"></td>
-                                         <td><input type="text" style="width: 70px"></td>
-                                         <td>0</td> 
+                                         <td>
+                                            <input type="hidden" class="t_val" name="t_val[]">
+                                            <span class="total-val">0.00</span>
+                                         </td> 
+                                         
+                                         <td><input type="number" min="1" name="lactation_am[]" class="lactation-am" style="width: 70px"></td>
+                                         <td><input type="number" min="1" name="lactation_pm[]" class="lactation-pm" style="width: 70px"></td>
+                                         <td>
+                                             <input type="hidden" class="lactation_milk" name="lactation_am_pm[]">
+                                             <span id="lactation_am_pm"></span>
+                                         </td> 
                                     </tr>
                                 <?php } ?>
 
@@ -113,13 +122,13 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td colspan="2">Total Concentrate = 0.00 KGs</td>
-                                        <td colspan="2">Total Hay = 0.00 KGs</td>
-                                        <td colspan="2">Total Fooder = 0.00 KGs</td>
-                                        <td>Total Feed = 0.00 KGs</td>
+                                        <td colspan="2">Total Concentrate = <span id="total-concentrate"></span> KGs</td>
+                                        <td colspan="2">Total Hay = <span id="total-hay"></span> KGs</td>
+                                        <td colspan="2">Total Fooder = <span id="total-gFooder"></span> KGs</td>
+                                        <td>Total Feed = <span id="total_feed"></span> KGs</td>
                                         <td></td>
                                         <td></td>
-                                        <td> Total Milk = 0 KGs </td>
+                                        <td> Total Milk = <span id="total_milk"></span> KGs </td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -129,7 +138,7 @@
                                         <td colspan="2">
                                             <div class="form-check">
                                                 <label class="big form-check-label">
-                                                    <input class="form-check-input " type="checkbox" id="check-toggle-concentrate" value="2">
+                                                    <input class="form-check-input " type="checkbox" id="check-toggle-concentrate" value="">
                                                     <span class="form-check-sign"><span class="check"></span></span>
                                                 </label>
                                             </div>

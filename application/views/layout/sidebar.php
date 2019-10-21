@@ -329,10 +329,16 @@
 							<ul class="nav">
 								<li>
 									<a href="<?php echo base_url('ratio'); ?>">
-										<i class="nc-icon nc-simple-add sidebar-mini-icon"></i>
-										<span class="sidebar-normal"> All Ratios</span>
+										<i class="nc-icon nc-bullet-list-67 sidebar-mini-icon"></i>
+										<span class="sidebar-normal"> All Ratios </span>
 									</a>
-								</li>
+								</li><!-- 
+								<li>
+									<a href="<?php //echo base_url('ratio/create'); ?>">
+										<i class="nc-icon nc-simple-add sidebar-mini-icon"></i>
+										<span class="sidebar-normal"> Add Ratios</span>
+									</a>
+								</li> -->
 
 							</ul>
 						</div>

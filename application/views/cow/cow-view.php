@@ -104,10 +104,13 @@
                                             <td class="text-center">
                                                 <?php 
                                                 $age = age($cow->dob);
-                                                if($age >1){
-                                                    echo "Adult";
-                                                }else{
-                                                    echo " Calf";
+                                               /* echo $age;*/
+                                                if($age > 3){
+                                                    echo strtoupper("<b>adult</b>");
+                                                }elseif($age < 3 && $age > 2){
+                                                    echo strtoupper("<b>calf</b>");
+                                                }elseif($age<1){
+                                                    echo strtoupper("<b>heifer</b>");
                                                 }
                                                 ?>
                                             </td>

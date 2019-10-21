@@ -7,12 +7,6 @@
             <li>
               <a class="copyright" href="https://www.appteum.com/" target="_blank">Appteum Inc.</a>
           </li>
-          <!--<li>-->
-            <!--  <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--  <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>-->
-                <!--</li>-->
             </ul>
         </nav>
         <div class="credits ml-auto">
@@ -25,7 +19,6 @@
 </footer>
 </div>
 </div>
-<!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" type="text/css" />-->
 <!--   Core JS Files   -->
 <script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script> 
@@ -475,37 +468,38 @@
         });*/
     };
 
-    $(document).ready(function () {
-/*        setFormValidation('#RegisterValidation');
-        setFormValidation('#TypeValidation');
-        setFormValidation('#LoginValidation');
-        setFormValidation('#RangeValidation');*/
-    });
-
-    $(document).ready(function(){
-                //Search supplier
-      $('input#supplier-name').on('keyup change', function () {
-        var supplier = $(this).val();
-        $('input#supplier-name').autocomplete({
-            source:function(request,response){
-                $.getJSON('<?php echo base_url() ?>supplier/supplier_name/'+supplier ,function(data){
-                    var array = $.map(data,function(row){
-                        return {
-                            value:row.name,
-                            label:row.name,
-                            supplier_id:row.id
-                        }
-                    })
-                    response($.ui.autocomplete.filter(array,request.term));
-                })
-            } ,            
-            minLength:2,
-            delay:500,
-            select:function(event,ui){
-                $("#supplier-id").val(ui.item.supplier_id);
-            }
+        $(document).ready(function () {
+    /*        setFormValidation('#RegisterValidation');
+            setFormValidation('#TypeValidation');
+            setFormValidation('#LoginValidation');
+            setFormValidation('#RangeValidation');*/
         });
-    });
+
+        $(document).ready(function(){
+
+        //Search supplier
+        $('input#supplier-name').on('keyup change', function () {
+            var supplier = $(this).val();
+            $('input#supplier-name').autocomplete({
+                source:function(request,response){
+                    $.getJSON('<?php echo base_url() ?>supplier/supplier_name/'+supplier ,function(data){
+                        var array = $.map(data,function(row){
+                            return {
+                                value:row.name,
+                                label:row.name,
+                                supplier_id:row.id
+                            }
+                        })
+                        response($.ui.autocomplete.filter(array,request.term));
+                    })
+                } ,            
+                minLength:2,
+                delay:500,
+                select:function(event,ui){
+                    $("#supplier-id").val(ui.item.supplier_id);
+                }
+            });
+        });
 
         //Supplier reset button
         $('button#btn-reset-supplier').on('click', function (e) {
@@ -735,10 +729,31 @@
 
         // Concentrate Total: Add the row checkbox-1 to last td
         $(document).on('change', '.checkbox-1', function () {
-            var $tr = $(this).closest('tr'); // get tr which contains the checkbox
-            // console.log($tr);
-            var tot = 0; // variable to sore sum
+            var tr = $(this).closest('tr'); // get tr which contains the checkbox
+            var cn = $('.checkbox-1', tr), 
+            hay = $('.checkbox-2', tr), 
+            gf = $('.checkbox-3', tr);
+
+            if ($(cn).is(":checked")){
+                cn = parseFloat(cn.val());
+            }else{
+                cn = 0;
+            }
+            if ($(hay).is(":checked")){
+                hay = parseFloat(hay.val());
+            }else{
+                hay = 0;
+            }
+            if ($(gf).is(":checked")){
+                gf = parseFloat(gf.val());
+            }else{
+                gf = 0;
+            }
+            a = cn+hay+gf;
+            var tot = 0; // variable to store sum
+
             $('.checkbox-1').each(function () { // iterate over inputs
+                t_val = $('.total-val')
                 if ($(this).is(":checked")) {
                     tot += parseFloat($(this).closest('td').prev('td').text()) || 0; // parse and add value, if NaN then add 0
                 } else {
@@ -746,17 +761,45 @@
                 }
             });
 
+            $('.total-val',tr).html(a.toFixed(2));
+            $('input.t_val',tr).html(a.toFixed(2));
+
             // console.log($(this));
             $('#total-concentrate').html(tot.toFixed(2)); // update last column value
 
-            $('input#total_concentrate').val(tot.toFixed(2));
+            var t_val = 0;
+            $('.total-val').each(function () { // iterate over inputs
+                t_val = t_val + parseFloat( $('.total-val').text()) || 0; // parse and add 
+            });
+            $('#total_feed').html(t_val.toFixed(2));
+
 
         }).trigger('change'); // trigger input to set initial value in column
 
         // Fodder Feeding Total: Add the row checkbox-2 to last td
         $(document).on('change', '.checkbox-2', function () {
-            var $tr = $(this).closest('tr'); // get tr which contains the checkbox
-            // console.log($tr);
+
+            var tr = $(this).closest('tr'); // get tr which contains the checkbox
+            var cn = $('.checkbox-1', tr), 
+            hay = $('.checkbox-2', tr), 
+            gf = $('.checkbox-3', tr);
+
+            if ($(cn).is(":checked")){
+                cn = parseFloat(cn.val());
+            }else{
+                cn = 0;
+            }
+            if ($(hay).is(":checked")){
+                hay = parseFloat(hay.val());
+            }else{
+                hay = 0;
+            }
+            if ($(gf).is(":checked")){
+                gf = parseFloat(gf.val());
+            }else{
+                gf = 0;
+            }
+            a = cn+hay+gf;
             var tot = 0; // variable to sore sum
             $('.checkbox-2').each(function () { // iterate over inputs
                 if ($(this).is(":checked")) {
@@ -765,18 +808,43 @@
                     tot += 0;
                 }
             });
+            $('.total-val',tr).html(a.toFixed(2));
+            $('input.t_val',tr).html(a.toFixed(2));
 
             // console.log($(this));
             $('#total-hay').html(tot.toFixed(2)); // update last column value
+            //$('.total-val').html(tkg.toFixed(2)); // update last column value
 
-            $('input#total_hay').val(tot.toFixed(2));
-
+            var t_val = 0;
+            $('.total-val').each(function () { // iterate over inputs
+                t_val = t_val + parseFloat( $('.total-val').text()) || 0; // parse and add 
+            });
+            $('#total_feed').html(t_val.toFixed(2));
         }).trigger('change'); // trigger input to set initial value in column
 
         // Fodder Feeding Total: Add the row checkbox-2 to last td
         $(document).on('change', '.checkbox-3', function () {
-            var $tr = $(this).closest('tr'); // get tr which contains the checkbox
-            // console.log($tr);
+            var tr = $(this).closest('tr'); // get tr which contains the checkbox
+            var cn = $('.checkbox-1', tr), 
+            hay = $('.checkbox-2', tr), 
+            gf = $('.checkbox-3', tr);
+
+            if ($(cn).is(":checked")){
+                cn = parseFloat(cn.val());
+            }else{
+                cn = 0;
+            }
+            if ($(hay).is(":checked")){
+                hay = parseFloat(hay.val());
+            }else{
+                hay = 0;
+            }
+            if ($(gf).is(":checked")){
+                gf = parseFloat(gf.val());
+            }else{
+                gf = 0;
+            }
+            a = cn+hay+gf;
             var tot = 0; // variable to sore sum
             $('.checkbox-3').each(function () { // iterate over inputs
                 if ($(this).is(":checked")) {
@@ -785,38 +853,75 @@
                     tot += 0;
                 }
             });
+
+            $('.total-val',tr).html(a.toFixed(2));
+            $('input.t_val',tr).val(a.toFixed(2));
+
             // console.log($(this));
-            $('#total-fodder').html(tot.toFixed(2)); // update last column value
+            $('#total-gFooder').html(tot.toFixed(2)); // update last column value
+            
+            var t_val = 0;
+            $('.total-val').each(function () { // iterate over inputs
+                t_val = t_val + parseFloat( $('.total-val').text()) || 0; // parse and add 
+            });
+            $('#total_feed').html(t_val.toFixed(2));
 
-            $('input#total_fodder').val(tot.toFixed(2));
 
         }).trigger('change'); // trigger input to set initial value in column
 
+         // Fodder Feeding Total: Add the row checkbox-2 to last td
+        $(document).on('keyup', '.lactation-am', function () {
+            
+            var tr = $(this).closest('tr'); // get tr which contains the input field
+            var am = $(this,tr),
+             pm = $('.lactation-pm',tr);
 
-        // Add the row inputs to last td Feeding
-        $(document).on('change', 'table .feed', function () {
+            am = parseFloat(am.val() || 0);
+            pm = parseFloat(pm.val() || 0);
 
-            var $tr = $(this).closest('tr'); // get tr which contains the input
-            var tot = 0; // variable to sore sum
-            $('input', $tr).not('.cow-id').each(function () { // iterate over inputs
-                // console.log($(this).is(":checked"));
-                if ($(this).is(":checked")) {
-                    tot += parseFloat($(this).closest('td').prev('td').text()) || 0; // parse and add value, if NaN then add 0
+            var lac = am + pm;
+            
+            $('#lactation_am_pm',tr).html(lac.toFixed(2));
+            $('input.lactation_milk',tr).val(lac.toFixed(2));
+
+            var t_lac = 0;
+            var t_lac1 = 0;
+            $('.lactation_milk').each(function (a) { // iterate over inputs
+                var ab = $(".lactation_milk")[a].value;
+                if (!isNaN(ab) && ab.length != 0) {
+                      t_lac1 = parseInt(t_lac1) + parseInt(ab);
                 }
-
             });
+            $('#total_milk').html(t_lac1.toFixed(2));
 
-            $('td#total-feeds', $tr).text(tot.toFixed(2)); // update last column value
+        }).trigger('keyup'); // trigger input to set initial value in column
 
-            // Add the last column inputs to get total milk
-            var tor = 0;
-            $('.total-feeds').each(function () {
-                // console.log($(this).html())
-                tor += parseFloat($(this).html()) || 0;
+
+
+        // Fodder Feeding Total: Add the row checkbox-2 to last td
+        $(document).on('keyup', '.lactation-pm', function () {
+            var tr = $(this).closest('tr'); // get tr which contains the checkbox
+            var pm = $(this,tr),
+             am = $('.lactation-am',tr);
+
+            am = parseFloat(am.val() || 0);
+            pm = parseFloat(pm.val() || 0);
+            
+            var lac = am + pm;
+            $('#lactation_am_pm',tr).html(lac.toFixed(2));
+            $('input.lactation_milk',tr).val(lac.toFixed(2));
+
+            var t_lac = 0;
+            var t_lac1 = 0;
+            $('.lactation_milk').each(function (a) { // iterate over inputs
+                var ab = $(".lactation_milk")[a].value;
+                if (!isNaN(ab) && ab.length != 0) {
+                      t_lac1 = parseInt(t_lac1) + parseInt(ab);
+                }
             });
-            $('#total-fed').text(tor.toFixed(2));
+            $('#total_milk').html(t_lac1.toFixed(2));
 
-        }).trigger('change'); // trigger input to set initial value in column
+        }).trigger('keyup'); // trigger input to set initial value in column
 
         // Check all button Hay
         $(document).on('click', "#check-toggle-concentrate", function () {
@@ -1089,6 +1194,7 @@
         $('input.medicine-name').autocomplete({
             source:function(request,response){
                 $.getJSON('<?php echo base_url() ?>activity/medicine/'+medicine ,function(data){
+                    
                     var array = $.map(data,function(row){
                         return {
                             value:row.name,
@@ -1212,276 +1318,276 @@
     $(function () {
 
 
-    function addStockViewStatus(toEnable) {
-        if (toEnable) {
+        function addStockViewStatus(toEnable) {
+            if (toEnable) {
+                $('input#product_name').prop('disabled', false);
+                $('input#product_quantity').prop('disabled', false);
+                $('button#add_product').prop('disabled', false);
+                $('button#btn_reset_product').prop('disabled', false);
+            } else {
+                $('input#product_name').prop('disabled', true);
+                $('input#product_quantity').prop('disabled', true);
+                $('button#add_product').prop('disabled', true);
+                $('button#btn_reset_product').prop('disabled', true);
+            }
+
+            $('td#present_stock').text('Present Stock: 0');
+            $('td#show_unit_price').text('Unit price: 0 TK');
+            $('input#product_name').val("");
+            $('input#product_quantity').val("");
+            $('input#product_id').val("");
+            $('input#product_sell_price').val("");
+            $('input#product_buy_price').val("");
+            $('input#product_unit').val("");
+            $('span#span_product_unit').text("-");
+
+        }
+
+        // Search Product
+        $('input#product_name').on('keyup change', function () {
+
+            $('input#product_name').autocomplete({
+                source: "/api/oct-account/-1/none/ledger/" + $(this).val(),
+                minLength: 1,
+                select: function (event, ui) {
+                    $('input#product_id').val(ui.item.id);
+                    $('input#product_sell_price').val(ui.item.unit_sell_price);
+                    $('input#product_buy_price').val(ui.item.unit_buy_price);
+                    $('input#product_unit').val(ui.item.unit);
+                    $(this).prop('disabled', true);
+
+                    $('span#span_product_unit').text(ui.item.unit);
+                    $('td#present_stock').text('Present Stock: Loading...');
+                    $('td#show_unit_price').text('Unit price: ' + ui.item.unit_buy_price + ' TK');
+
+                    getProductQuantity(ui.item.id, ui.item.unit);
+
+                }
+            });
+
+        });
+
+        function getProductQuantity(productId, unit) {
+
+            let $addButton = $('button#add_product');
+
+            $addButton.prop('disabled', true);
+
+            $.ajax(
+            {
+                url: '/api/oct-account/product/' + productId + '/quantity',
+                success: function (quantity, textStatus, jqXHR) {
+
+                    $('td#present_stock').text('Present Stock: ' + quantity + ' ' + unit);
+
+                    $addButton.prop('disabled', false);
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                    console.log("textStatus: " + textStatus + " | errorThrown: " + errorThrown);
+                    alert("textStatus: " + textStatus + " | errorThrown: " + errorThrown);
+
+                    $('button#btn_reset_product').click();
+
+                }
+
+            }
+            );
+
+        }
+
+        // Reset product form
+        $('button#btn_reset_product').on('click', function (e) {
+
+            $('input#product_name').val("");
+            $('input#product_id').val("");
+            $('input#product_quantity').val("");
+            $('td#present_stock').text('Present Stock: 0');
+            $('td#show_unit_price').text('Unit price: 0 TK');
             $('input#product_name').prop('disabled', false);
-            $('input#product_quantity').prop('disabled', false);
-            $('button#add_product').prop('disabled', false);
-            $('button#btn_reset_product').prop('disabled', false);
-        } else {
-            $('input#product_name').prop('disabled', true);
-            $('input#product_quantity').prop('disabled', true);
-            $('button#add_product').prop('disabled', true);
-            $('button#btn_reset_product').prop('disabled', true);
-        }
 
-        $('td#present_stock').text('Present Stock: 0');
-        $('td#show_unit_price').text('Unit price: 0 TK');
-        $('input#product_name').val("");
-        $('input#product_quantity').val("");
-        $('input#product_id').val("");
-        $('input#product_sell_price').val("");
-        $('input#product_buy_price').val("");
-        $('input#product_unit').val("");
-        $('span#span_product_unit').text("-");
-
-    }
-
-    // Search Product
-    $('input#product_name').on('keyup change', function () {
-
-        $('input#product_name').autocomplete({
-            source: "/api/oct-account/-1/none/ledger/" + $(this).val(),
-            minLength: 1,
-            select: function (event, ui) {
-                $('input#product_id').val(ui.item.id);
-                $('input#product_sell_price').val(ui.item.unit_sell_price);
-                $('input#product_buy_price').val(ui.item.unit_buy_price);
-                $('input#product_unit').val(ui.item.unit);
-                $(this).prop('disabled', true);
-
-                $('span#span_product_unit').text(ui.item.unit);
-                $('td#present_stock').text('Present Stock: Loading...');
-                $('td#show_unit_price').text('Unit price: ' + ui.item.unit_buy_price + ' TK');
-
-                getProductQuantity(ui.item.id, ui.item.unit);
-
-            }
         });
 
-    });
+        // Add stock to table
+        $('button#add_product').on('click', function (e) {
+            e.preventDefault();
 
-    function getProductQuantity(productId, unit) {
+            $product_name = $('input#product_name').val();
+            $product_id = $('input#product_id').val();
+            $product_quantity = $('input#product_quantity').val();
+            $product_unit = $('input#product_unit').val();
+            $product_sell_price = $('input#product_sell_price').val();
+            $product_buy_price = $('input#product_buy_price').val();
 
-        let $addButton = $('button#add_product');
+            // validation
+            if (isEmpty($product_name)) {
+                swal({
+                    title: 'Warning',
+                    text: "No product selected!",
+                    type: 'warning'
+                });
+                return;
+            }
 
-        $addButton.prop('disabled', true);
+            if (isEmpty($product_id)) {
+                swal({
+                    title: 'Warning',
+                    text: "No product selected!",
+                    type: 'warning'
+                });
+                return;
+            }
 
-        $.ajax(
-        {
-            url: '/api/oct-account/product/' + productId + '/quantity',
-            success: function (quantity, textStatus, jqXHR) {
+            if (isEmpty($product_quantity) || parseFloat($product_quantity) === 0 || isNaN(parseFloat($product_quantity))) {
+                swal({
+                    title: 'Warning',
+                    text: "Product quantity zero!",
+                    type: 'warning'
+                });
+                return;
+            }
 
-                $('td#present_stock').text('Present Stock: ' + quantity + ' ' + unit);
+            if (isEmpty($product_unit)) {
+                swal({
+                    title: 'Warning',
+                    text: "No product selected!",
+                    type: 'warning'
+                });
+                return;
+            }
 
-                $addButton.prop('disabled', false);
+            if (isEmpty($product_sell_price)) {
+                swal({
+                    title: 'Warning',
+                    text: "No product selected!",
+                    type: 'warning'
+                });
+                return;
+            }
 
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
+            if (isEmpty($product_buy_price)) {
+                swal({
+                    title: 'Warning',
+                    text: "No product selected!",
+                    type: 'warning'
+                });
+                return;
+            }
 
-                console.log("textStatus: " + textStatus + " | errorThrown: " + errorThrown);
-                alert("textStatus: " + textStatus + " | errorThrown: " + errorThrown);
+            let $total_amount = (parseFloat($product_buy_price) * parseFloat($product_quantity)).toFixed(2);
 
-                $('button#btn_reset_product').click();
+            $existing_element = $('tr[data-id="' + $product_id + '"]');
+
+            if ($existing_element.length !== 0) {
+
+                // remove existing element
+                $existing_element.remove();
 
             }
 
-        }
-        );
+            $('tbody#items').append("<tr data-id='" + $product_id + "'>" +
+                "<input type='hidden' name='product_id[" + $product_id + "]' value='" + $product_id + "'>" +
+                "<input type='hidden' class='product_amount' name='product_amount[" + $product_id + "]' value='" + $total_amount + "'>" +
 
-    }
+                "<td>" + $product_name + "</td>" +
+                "<td class='border-right-0'>" +
+                "<input id='inProductQuantity' class='inProductQuantity form-control' type='number' min='1' name='product_quantity[" + $product_id + "]' value='" + $product_quantity + "' required>" +
+                "</td>" +
+                "<td class='border-left-0'>" + $product_unit + "</td>" +
+                "<td>" +
+                "<input id='inProductBuyPrice' class='inProductBuyPrice form-control' type='number' min='1' step='any' name='product_buy_price[" + $product_id + "]' value='" + $product_buy_price + "'>" +
+                "</td>" +
+                "<td class='p_amount'>" + $total_amount + "</td>" +
+                "<td><button class='btn btn-danger' id='btn_remove_item'>Remove</button></td>" +
+                "</tr>");
 
-    // Reset product form
-    $('button#btn_reset_product').on('click', function (e) {
+            updateGrossAmount();
 
-        $('input#product_name').val("");
-        $('input#product_id').val("");
-        $('input#product_quantity').val("");
-        $('td#present_stock').text('Present Stock: 0');
-        $('td#show_unit_price').text('Unit price: 0 TK');
-        $('input#product_name').prop('disabled', false);
+            addStockViewStatus(true);
 
-    });
-
-    // Add stock to table
-    $('button#add_product').on('click', function (e) {
-        e.preventDefault();
-
-        $product_name = $('input#product_name').val();
-        $product_id = $('input#product_id').val();
-        $product_quantity = $('input#product_quantity').val();
-        $product_unit = $('input#product_unit').val();
-        $product_sell_price = $('input#product_sell_price').val();
-        $product_buy_price = $('input#product_buy_price').val();
-
-        // validation
-        if (isEmpty($product_name)) {
-            swal({
-                title: 'Warning',
-                text: "No product selected!",
-                type: 'warning'
-            });
-            return;
-        }
-
-        if (isEmpty($product_id)) {
-            swal({
-                title: 'Warning',
-                text: "No product selected!",
-                type: 'warning'
-            });
-            return;
-        }
-
-        if (isEmpty($product_quantity) || parseFloat($product_quantity) === 0 || isNaN(parseFloat($product_quantity))) {
-            swal({
-                title: 'Warning',
-                text: "Product quantity zero!",
-                type: 'warning'
-            });
-            return;
-        }
-
-        if (isEmpty($product_unit)) {
-            swal({
-                title: 'Warning',
-                text: "No product selected!",
-                type: 'warning'
-            });
-            return;
-        }
-
-        if (isEmpty($product_sell_price)) {
-            swal({
-                title: 'Warning',
-                text: "No product selected!",
-                type: 'warning'
-            });
-            return;
-        }
-
-        if (isEmpty($product_buy_price)) {
-            swal({
-                title: 'Warning',
-                text: "No product selected!",
-                type: 'warning'
-            });
-            return;
-        }
-
-        let $total_amount = (parseFloat($product_buy_price) * parseFloat($product_quantity)).toFixed(2);
-
-        $existing_element = $('tr[data-id="' + $product_id + '"]');
-
-        if ($existing_element.length !== 0) {
-
-            // remove existing element
-            $existing_element.remove();
-
-        }
-
-        $('tbody#items').append("<tr data-id='" + $product_id + "'>" +
-            "<input type='hidden' name='product_id[" + $product_id + "]' value='" + $product_id + "'>" +
-            "<input type='hidden' class='product_amount' name='product_amount[" + $product_id + "]' value='" + $total_amount + "'>" +
-
-            "<td>" + $product_name + "</td>" +
-            "<td class='border-right-0'>" +
-            "<input id='inProductQuantity' class='inProductQuantity form-control' type='number' min='1' name='product_quantity[" + $product_id + "]' value='" + $product_quantity + "' required>" +
-            "</td>" +
-            "<td class='border-left-0'>" + $product_unit + "</td>" +
-            "<td>" +
-            "<input id='inProductBuyPrice' class='inProductBuyPrice form-control' type='number' min='1' step='any' name='product_buy_price[" + $product_id + "]' value='" + $product_buy_price + "'>" +
-            "</td>" +
-            "<td class='p_amount'>" + $total_amount + "</td>" +
-            "<td><button class='btn btn-danger' id='btn_remove_item'>Remove</button></td>" +
-            "</tr>");
-
-        updateGrossAmount();
-
-        addStockViewStatus(true);
-
-    });
-
-    // Remove Item
-    $('body').on('click', 'button#btn_remove_item', function () {
-
-        $parent = $(this).closest('tr');
-        $parent.remove();
-        updateGrossAmount();
-
-    });
-
-    $('input#discount_amount').on('keyup change', function () {
-
-        updateNetAmount();
-
-    });
-
-    $('input#discount_percent').on('keyup change', function () {
-
-        $gross_amount = parseFloat($('input#inGrossAmount').val()) || 0;
-
-        $discount_percentage = parseFloat($(this).val()) || 0;
-
-        $discount_amount = $gross_amount * $discount_percentage / 100;
-
-        $('input#discount_amount').val($discount_amount);
-
-        updateNetAmount();
-
-    });
-
-    function updateGrossAmount() {
-        let $gross_amount = 0;
-
-        $('td.p_amount').each(function () {
-            $gross_amount += parseFloat($(this).text()) || 0;
         });
 
-        $('td#gross_amount').text($gross_amount.toFixed(2) + " TK");
-        $('input#inGrossAmount').val($gross_amount.toFixed(2));
+        // Remove Item
+        $('body').on('click', 'button#btn_remove_item', function () {
 
-        updateNetAmount();
-    }
+            $parent = $(this).closest('tr');
+            $parent.remove();
+            updateGrossAmount();
 
-    function updateNetAmount() {
-        $gross_amount = $('input#inGrossAmount').val();
+        });
 
-        $discount_amount = parseFloat($('input#discount_amount').val());
+        $('input#discount_amount').on('keyup change', function () {
 
-        $net_amount = parseFloat($gross_amount) - ($discount_amount ? $discount_amount : 0);
+            updateNetAmount();
 
-        $('td#net_amount').text($net_amount.toFixed(2) + ' TK');
-        $('input#inNetAmount').val($net_amount.toFixed(2));
-    }
+        });
 
-    $('body').on('keyup change', 'input.inProductQuantity', function () {
+        $('input#discount_percent').on('keyup change', function () {
 
-        if (!parseFloat($(this).val())) {
-            return;
+            $gross_amount = parseFloat($('input#inGrossAmount').val()) || 0;
+
+            $discount_percentage = parseFloat($(this).val()) || 0;
+
+            $discount_amount = $gross_amount * $discount_percentage / 100;
+
+            $('input#discount_amount').val($discount_amount);
+
+            updateNetAmount();
+
+        });
+
+        function updateGrossAmount() {
+            let $gross_amount = 0;
+
+            $('td.p_amount').each(function () {
+                $gross_amount += parseFloat($(this).text()) || 0;
+            });
+
+            $('td#gross_amount').text($gross_amount.toFixed(2) + " TK");
+            $('input#inGrossAmount').val($gross_amount.toFixed(2));
+
+            updateNetAmount();
         }
 
-        let $parent = $(this).closest('tr');
+        function updateNetAmount() {
+            $gross_amount = $('input#inGrossAmount').val();
 
-        let $product_quantity_val = parseFloat($(this).val()) || 0;
+            $discount_amount = parseFloat($('input#discount_amount').val());
 
-        let $product_buy_price = $parent.find($('input#inProductBuyPrice'));
+            $net_amount = parseFloat($gross_amount) - ($discount_amount ? $discount_amount : 0);
 
-        let $product_buy_price_val = parseFloat($product_buy_price.val()) || 0;
+            $('td#net_amount').text($net_amount.toFixed(2) + ' TK');
+            $('input#inNetAmount').val($net_amount.toFixed(2));
+        }
 
-        let $final_amount = ($product_buy_price_val * $product_quantity_val).toFixed(2);
+        $('body').on('keyup change', 'input.inProductQuantity', function () {
 
-        // setter elements
-        let $product_amount = $parent.find($('input.product_amount'));
-        let $td_product_amount = $parent.find($('td.p_amount'));
+            if (!parseFloat($(this).val())) {
+                return;
+            }
 
-        $product_amount.val($final_amount);
-        $td_product_amount.text($final_amount);
+            let $parent = $(this).closest('tr');
 
-        updateGrossAmount();
+            let $product_quantity_val = parseFloat($(this).val()) || 0;
 
+            let $product_buy_price = $parent.find($('input#inProductBuyPrice'));
+
+            let $product_buy_price_val = parseFloat($product_buy_price.val()) || 0;
+
+            let $final_amount = ($product_buy_price_val * $product_quantity_val).toFixed(2);
+
+            // setter elements
+            let $product_amount = $parent.find($('input.product_amount'));
+            let $td_product_amount = $parent.find($('td.p_amount'));
+
+            $product_amount.val($final_amount);
+            $td_product_amount.text($final_amount);
+
+            updateGrossAmount();
+
+        });
     });
-});
 
 </script>
 
@@ -1792,7 +1898,6 @@
             }
         }
     });
-
 
     var supplier_form = $('form#supplier-ladger');
     supplier_form.ajaxForm({

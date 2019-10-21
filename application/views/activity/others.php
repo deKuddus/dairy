@@ -460,7 +460,6 @@
                                     </div>
                                 </form>
                             </div>
-
                             <div class="tab-pane" id="treatment">
                                 <form action="" id="treatment-form" class="form-horizontal"  method="POST">
                                     <div class="row">

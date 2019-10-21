@@ -64,7 +64,8 @@ $route['activity/lactation/:shed_id/:branch_id'] = 'activity/lactation';
 
 //ratio
 $route['ratio'] = 'ratio/index';
-$route['add-ratio'] = 'ratio/create';
+$route['ratio/edit/:id'] = 'ratio/edit';
+$route['ratio/update/:id'] = 'ratio/update';
 
 //ratio
 $route['user'] = 'user/index';

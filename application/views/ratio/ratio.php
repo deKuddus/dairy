@@ -1,119 +1,51 @@
-
-
 <div class="content">
 <div class="printarea">
     <div class="d-none d-print-block col-10 text-center mx-auto">
         <h4 class="font-weight-bold"> Appteum Agro</h4>
         <p>Salimpur, Chittagong.</p>
     </div>
-    
-    <div class="row">
-        <div class="col-md-8">
-            <form action="" id="addRatio" class="form-horizontal" method="POST">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Update Ratio</h4>
-                    </div>
-                    <div class="card-body">
-
-                        <div class="row">
-                            <label class="col-sm-2 col-form-label">Weight to Hay</label>
-                            <div class="col-sm-8">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon2"> in Percentage(s): </span>
-                                    </div>
-                                    <input type="number" class="form-control test" name="weight_hay_feed_amount"
-                                           value="0.5" step="0.01" min="0" max="100"/>
-
-                                </div>
-                            </div>
-                            <div class="col-sm-1 label-on-right">
-                                <code>*</code>
-                            </div>
-                            <div class="col-sm-1 label-on-right">
-                                0.5 %
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label class="col-sm-2 col-form-label">Weight to Green Fodder</label>
-                            <div class="col-sm-8">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon2"> in Percentage(s): </span>
-                                    </div>
-                                    <input type="number" class="form-control test" name="weight_green_fodder_feed_amount"
-                                           value="0.7" step="0.01" min="0" max="100"/>
-
-                                </div>
-                            </div>
-                            <div class="col-sm-1 label-on-right">
-                                <code>*</code>
-                            </div>
-                            <div class="col-sm-1 label-on-right">
-                                0.7 %
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label class="col-sm-2 col-form-label">Weight to Concentrate</label>
-                            <div class="col-sm-8">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon2"> in Percentage(s): </span>
-                                    </div>
-                                    <input type="number" class="form-control test" name="weight_concentrate_feed_amount"
-                                           value="1.5" step="0.01" min="0" max="100"/>
-
-
-                                </div>
-                            </div>
-                            <div class="col-sm-1 label-on-right">
-                                <code>*</code>
-                            </div>
-                            <div class="col-sm-1 label-on-right">
-                                1.5 %
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label class="col-sm-2 col-form-label">Lactation to Concentrate</label>
-                            <div class="col-sm-8">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon2"> in Percentage(s): </span>
-                                    </div>
-                                    <input type="number" class="form-control test" name="lactation_concentrate_feed_amount"
-                                           value="2" step="0.01" min="0" max="100"/>
-
-
-                                </div>
-                            </div>
-                            <div class="col-sm-1 label-on-right">
-                                <code>*</code>
-                            </div>
-                            <div class="col-sm-1 label-on-right">
-                                2 %
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-2">
-
-                            </div>
-                            <div class="col-sm-8">
-                                <button class="btn btn-default" type="submit">Save Ratio</button>
-                            </div>
-
-                        </div>
-
-                    </div> <!-- card-body end -->
-                </div>
-            </form>
+      
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Ratios Database</h4>
         </div>
+        <div class="card-body">
+          <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th>Cow Type</th>
+                <th>Weight to Hay</th>
+                <th>Weight to Green Fodder</th>
+                <th>Weight to Concentrate</th>
+                <th>Lactation to Concentrate</th>
+                <th colspan="3" class="disabled-sorting text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($ratios as $ratio) {?>
+              <tr>
+                <td><?php echo $ratio->cow_type; ?></td>
+                <td><?php echo $ratio->hay; ?>%</td>
+                <td><?php echo $ratio->green_fooder; ?>%</td>
+                <td><?php echo $ratio->concentrate; ?>%</td>
+                <td><?php echo $ratio->lactation_concentrate; ?>%</td>
+                <td class="text-right">
+                  <a href="<?php echo base_url('ratio/edit/'.$ratio->id) ?>" class="btn btn-warning btn-link btn-icon btn-sm edit"><i class="fa fa-edit"></i></a>
+                </td>
+              </tr>
+            <?php  } ?>
+
+            </tbody>
+          </table>
+        </div>
+        <!-- end content-->
+      </div>
+      <!--  end card  -->
     </div>
-
-
+    <!-- end col-md-12 -->
+  </div>
+  <!-- end row -->
 </div>
 </div>

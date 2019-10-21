@@ -75,4 +75,21 @@ function shed($id){
    }
 }
 
+function calculate_concentrate($dob){
+  $age = age($dob);
+  if($age > 3){
+    $type = "milking_cow";
+   
+  }elseif($age < 3 && $age > 2){
+   
+  }elseif($age<1){
+    
+  }
+}
+
+function get_food_ratio($type){
+  $CI =& get_instance();
+  $query = $CI->db->query("SELECT * FROM ratio WHERE ");
+}
+
 ?>
