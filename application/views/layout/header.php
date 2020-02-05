@@ -34,6 +34,7 @@
     <link href="<?php echo base_url() ?>assets/css/demo.css" rel="stylesheet"/>
     
     <link href="<?php echo base_url() ?>assets/css/custom.css" rel="stylesheet"/>
+    <link href="<?php echo base_url() ?>assets/css/toastr/toastr.min.css" rel="stylesheet"/>
     <!-- Extra details for Live View on GitHub Pages -->
     <!--jQuery UI-->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css"/>
@@ -50,17 +51,17 @@
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div class="wrapper ">
-    <div class="sidebar" data-color="blue" data-active-color="danger">
+    <div class="sidebar" data-color="green" data-active-color="danger">
     <!--
       Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
   -->
     <div class="logo">
-        <a href="/" class="simple-text logo-mini">
+        <a href="<?php echo base_url('/') ?>" class="simple-text logo-mini">
             <div class="logo-image-small">
                 <img src="<?php echo base_url() ?>assets/img/logo-small.png">
             </div>
         </a>
-        <a href="/" class="simple-text logo-normal">
+        <a href="<?php echo base_url('/') ?>" class="simple-text logo-normal">
         Appteum Dairy
         <!-- <div class="logo-image-big">
             <img src="/assets/img/logo-big.png">
@@ -88,7 +89,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="/">Appteum Dairy</a>
+            <a class="navbar-brand" href="<?php echo base_url('/') ?>">Appteum Dairy</a>
             <a href="<?php echo  isset($_SERVER['HTTP_REFERER'])? $_SERVER['HTTP_REFERER']:'' ?>" class="btn btn-default">Previous Page</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">

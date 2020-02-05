@@ -14,6 +14,7 @@ class Cow extends CI_Controller {
 	public function index()
 	{
 		$data['cows'] = $this->cows->show();
+
 		$data['sheds'] = $this->sheds->show();
 		$data['genders'] = $this->genders->show();
 		$data['content']=$this->load->view('cow/cow',$data,true);
@@ -150,6 +151,8 @@ class Cow extends CI_Controller {
 
 	public function details($cow_id)
 	{
+		$data['id'] = $cow_id;
+		$data['others_activity'] = $this->cows-> get_cows_others_activity_by_id($cow_id);
 		$data['data'] = $this->cows->arrayData();
 		$data['cows'] = $this->cows->details($cow_id);
 		$data['content'] = $this->load->view('cow/cow-view',$data,true);

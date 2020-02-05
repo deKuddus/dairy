@@ -1,76 +1,3 @@
-
-<footer class="footer footer-black  footer-white ">
-    <div class="container-fluid">
-      <div class="row">
-        <nav class="footer-nav">
-          <ul>
-            <li>
-              <a class="copyright" href="https://www.appteum.com/" target="_blank">Appteum Inc.</a>
-          </li>
-            </ul>
-        </nav>
-        <div class="credits ml-auto">
-          <span class="copyright">
-            ©2019, made with <i class="fa fa-heart heart"></i> by Appteum
-        </span>
-    </div>
-</div>
-</div>
-</footer>
-</div>
-</div>
-<!--   Core JS Files   -->
-<script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
-<script src="<?php echo base_url() ?>assets/js/toastr/toastr.min.js"></script>
-<script src="http://malsup.github.com/jquery.form.js"></script> 
-<script src="<?php echo base_url() ?>assets/js/popper.min.js"></script>
-<script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url() ?>assets/js/perfect-scrollbar.jquery.min.js"></script>
-<script src="<?php echo base_url() ?>assets/js/moment.min.js"></script>
-<script src="<?php echo base_url() ?>assets/js/printThis.min.js"></script>
-<!--  Plugin for Switches, full documentation here: http://www.jque.re//version3/bootstrap.switch/ -->
-<script src="<?php echo base_url() ?>assets/js/bootstrap-switch.js"></script>
-<!--  Plugin for Sweet Alert -->
-<script src="<?php echo base_url() ?>assets/js/sweetalert2.min.js"></script>
-<!-- Forms Validations Plugin -->
-<script src="<?php echo base_url() ?>assets/js/jquery.validate.min.js"></script>
-<!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-<script src="<?php echo base_url() ?>assets/js/jquery.bootstrap-wizard.js"></script>
-<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-<script src="<?php echo base_url() ?>assets/js/bootstrap-selectpicker.js"></script>
-<!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-<script src="<?php echo base_url() ?>assets/js/bootstrap-datetimepicker.js"></script>
-<!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
-<script src="<?php echo base_url() ?>assets/js/jquery.dataTables.min.js"></script>
-<!-- --Nm change----- -->
-<script src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>
-<!-- Nm Change end -->
-<!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-<script src="<?php echo base_url() ?>assets/js/bootstrap-tagsinput.js"></script>
-<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-<script src="<?php echo base_url() ?>assets/js/jasny-bootstrap.min.js"></script>
-<!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-<script src="<?php echo base_url() ?>assets/js/fullcalendar.min.js"></script>
-<!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-<script src="<?php echo base_url() ?>assets/js/jquery-jvectormap.js"></script>
-<!--  Plugin for the Bootstrap Table -->
-<script src="<?php echo base_url() ?>assets/js/nouislider.min.js"></script>
-<!--  Google Maps Plugin    -->
-
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!-- Chart JS -->
-<script src="<?php echo base_url() ?>assets/js/chartjs.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="<?php echo base_url() ?>assets/js/bootstrap-notify.js"></script>
-<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="<?php echo base_url() ?>assets/js/paper-dashboard.min790f.js?v=2.0.1" type="text/javascript"></script>
-<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="<?php echo base_url() ?>assets/js/demo.js"></script>
-<!-- Share library -->
-<script src="<?php echo base_url() ?>assets/js/jquery.sharrre.js"></script>
-<!-- Custom scripts -->
-<script src="<?php echo base_url() ?>assets/js/custom.js"></script>
 <script>
     // $(document).ready( function () {
     //   $('#myTable').DataTable();
@@ -196,74 +123,74 @@
     //             });
     //         });
 
-    // $(document).ready(function () {
+/*    $(document).ready(function () {
 
 
-    //     $('#facebook').sharrre({
-    //         share: {
-    //             facebook: true
-    //         },
-    //         enableHover: false,
-    //         enableTracking: false,
-    //         enableCounter: false,
-    //         click: function (api, options) {
-    //             api.simulateClick();
-    //             api.openPopup('facebook');
-    //         },
-    //         template: '<i class="fab fa-facebook-f"></i> Facebook',
-    //         url: 'https://demos.creative-tim.com/paper-dashboard-pro/examples/dashboard.html'
-    //     });
+        $('#facebook').sharrre({
+            share: {
+                facebook: true
+            },
+            enableHover: false,
+            enableTracking: false,
+            enableCounter: false,
+            click: function (api, options) {
+                api.simulateClick();
+                api.openPopup('facebook');
+            },
+            template: '<i class="fab fa-facebook-f"></i> Facebook',
+            url: 'https://demos.creative-tim.com/paper-dashboard-pro/examples/dashboard.html'
+        });
 
-    //     $('#google').sharrre({
-    //         share: {
-    //             googlePlus: true
-    //         },
-    //         enableCounter: false,
-    //         enableHover: false,
-    //         enableTracking: true,
-    //         click: function (api, options) {
-    //             api.simulateClick();
-    //             api.openPopup('googlePlus');
-    //         },
-    //         template: '<i class="fab fa-google-plus"></i> Google',
-    //         url: 'https://demos.creative-tim.com/paper-dashboard-pro/examples/dashboard.html'
-    //     });
+        $('#google').sharrre({
+            share: {
+                googlePlus: true
+            },
+            enableCounter: false,
+            enableHover: false,
+            enableTracking: true,
+            click: function (api, options) {
+                api.simulateClick();
+                api.openPopup('googlePlus');
+            },
+            template: '<i class="fab fa-google-plus"></i> Google',
+            url: 'https://demos.creative-tim.com/paper-dashboard-pro/examples/dashboard.html'
+        });
 
-    //     $('#twitter').sharrre({
-    //         share: {
-    //             twitter: true
-    //         },
-    //         enableHover: false,
-    //         enableTracking: false,
-    //         enableCounter: false,
-    //         buttons: {
-    //             twitter: {
-    //                 via: 'CreativeTim'
-    //             }
-    //         },
-    //         click: function (api, options) {
-    //             api.simulateClick();
-    //             api.openPopup('twitter');
-    //         },
-    //         template: '<i class="fab fa-twitter"></i> Twitter',
-    //         url: 'https://demos.creative-tim.com/paper-dashboard-pro/examples/dashboard.html'
-    //     });
+        $('#twitter').sharrre({
+            share: {
+                twitter: true
+            },
+            enableHover: false,
+            enableTracking: false,
+            enableCounter: false,
+            buttons: {
+                twitter: {
+                    via: 'CreativeTim'
+                }
+            },
+            click: function (api, options) {
+                api.simulateClick();
+                api.openPopup('twitter');
+            },
+            template: '<i class="fab fa-twitter"></i> Twitter',
+            url: 'https://demos.creative-tim.com/paper-dashboard-pro/examples/dashboard.html'
+        });
 
 
-    //     var _gaq = _gaq || [];
-    //     _gaq.push(['_setAccount', 'UA-46172202-1']);
-    //     _gaq.push(['_trackPageview']);
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46172202-1']);
+        _gaq.push(['_trackPageview']);
 
-    //     (function () {
-    //         var ga = document.createElement('script');
-    //         ga.type = 'text/javascript';
-    //         ga.async = true;
-    //         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    //         var s = document.getElementsByTagName('script')[0];
-    //         s.parentNode.insertBefore(ga, s);
-    //     })();
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
 
-    // });
+    });*/
 </script>
 
 <noscript>
@@ -454,27 +381,27 @@
 
 <script>
     function setFormValidation(id) {
-        // $(id).validate({
-        //     highlight: function (element) {
-        //         $(element).closest('.form-group').removeClass('has-success').addClass('has-danger');
-        //         $(element).closest('.form-check').removeClass('has-success').addClass('has-danger');
-        //     },
-        //     success: function (element) {
-        //         $(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
-        //         $(element).closest('.form-check').removeClass('has-danger').addClass('has-success');
-        //     },
-        //     errorPlacement: function (error, element) {
-        //         $(element).closest('.form-group').append(error);
-        //     },
-        // });
+/*        $(id).validate({
+            highlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-danger');
+                $(element).closest('.form-check').removeClass('has-success').addClass('has-danger');
+            },
+            success: function (element) {
+                $(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
+                $(element).closest('.form-check').removeClass('has-danger').addClass('has-success');
+            },
+            errorPlacement: function (error, element) {
+                $(element).closest('.form-group').append(error);
+            },
+        });*/
     };
 
-        // $(document).ready(function () {
-        //     setFormValidation('#RegisterValidation');
-        //     setFormValidation('#TypeValidation');
-        //     setFormValidation('#LoginValidation');
-        //     setFormValidation('#RangeValidation');
-        // });
+        $(document).ready(function () {
+    /*        setFormValidation('#RegisterValidation');
+            setFormValidation('#TypeValidation');
+            setFormValidation('#LoginValidation');
+            setFormValidation('#RangeValidation');*/
+        });
 
         $(document).ready(function(){
 
@@ -655,42 +582,42 @@
         });
 
 
-        // // Gets Cows for the selected shed
-        // $(document).on('change', '#shed-options', function (e) {
-        //     e.preventDefault();
+        // Gets Cows for the selected shed
+        $(document).on('change', '#shed-options', function (e) {
+            e.preventDefault();
 
-        //     var selectedShed = $(this).find(":selected").val();
-        //     var selectedDate = $('#date-picker').val().replace('/', '-') || ' ';
-        //     var selectedDate = selectedDate.replace('/', '-');
-        //     //   console.log(selectedDate);
-        //     var branch_id = '<?php if(isset($branch_id)) echo $branch_id; ?>'; 
-        //     $.ajax({
-        //         // async: false,
-        //         /* the route pointing to the post function */
-        //         url: '<?php echo base_url() ?>lactation/ajaxWeightFeed/',
-        //         type: 'post',
-        //         /* send the csrf-token and the input to the controller */
-        //         data: {selectedShed:selectedShed,selectedDate:selectedDate,branch_id:branch_id},
-        //         dataType: 'JSON',
-        //          remind that 'data' is the response of the AjaxController 
-        //         success: function (data) {
-        //             // console.log(data);
-        //             $("#datatable").html(data['html']);
-        //             $('input:disabled').trigger('change');
-        //             $('input:disabled').trigger('input');
-        //             // $(window).load(document.URL+'#date-button');
-        //             // Show Hide Save Button
-        //             totalInputs = $('#datatable input').not('.cow-id').length;
-        //             totalDisabledInputs = $('#datatable input:disabled').not('.cow-id').length;
-        //             // console.log('totalInputs= '+ totalInputs + ',  totalDisabledInputs= '+ totalDisabledInputs);
-        //             if (totalInputs == totalDisabledInputs) {
-        //                 $("#saves-data").hide();
-        //             } else {
-        //                 $("#saves-data").show();
-        //             }
-        //         }
-        //     });
-        // });
+            var selectedShed = $(this).find(":selected").val();
+            var selectedDate = $('#date-picker').val().replace('/', '-') || ' ';
+            var selectedDate = selectedDate.replace('/', '-');
+
+            //   console.log(selectedDate);
+            $.ajax({
+                // async: false,
+                /* the route pointing to the post function */
+                url: '/ajaxWeightFeed/' + selectedShed + '/' + selectedDate + '/',
+                type: 'get',
+                /* send the csrf-token and the input to the controller */
+                data: {},
+                dataType: 'JSON',
+                /* remind that 'data' is the response of the AjaxController */
+                success: function (data) {
+                    // console.log(data);
+                    $("#datatable").html(data['html']);
+                    $('input:disabled').trigger('change');
+                    $('input:disabled').trigger('input');
+                    // $(window).load(document.URL+'#date-button');
+                    // Show Hide Save Button
+                    totalInputs = $('#datatable input').not('.cow-id').length;
+                    totalDisabledInputs = $('#datatable input:disabled').not('.cow-id').length;
+                    // console.log('totalInputs= '+ totalInputs + ',  totalDisabledInputs= '+ totalDisabledInputs);
+                    if (totalInputs == totalDisabledInputs) {
+                        $("#saves-data").hide();
+                    } else {
+                        $("#saves-data").show();
+                    }
+                }
+            });
+        });
 
         // Gets Cows for the selected date
         $(document).on('click', '#date-button', function (e) {
@@ -751,10 +678,10 @@
                 gf = 0;
             }
             a = cn+hay+gf;
-            var tot = 0; 
+            var tot = 0; // variable to store sum
 
             $('.checkbox-1').each(function () { // iterate over inputs
-                // t_val = $('.total-val')
+                t_val = $('.total-val')
                 if ($(this).is(":checked")) {
                     tot += parseFloat($(this).closest('td').prev('td').text()) || 0; // parse and add value, if NaN then add 0
                 } else {
@@ -762,39 +689,20 @@
                 }
             });
 
-            if(a > 0){
-                var a = a;
-            }else{
-                var  a = 0;
-            }
-
-            if(tot > 0){
-                var tot = tot;
-            }else{
-                var tot = 0;
-            }
-
             $('.total-val',tr).html(a.toFixed(2));
-            $('input.t_val',tr).val(a.toFixed(2));
+            $('input.t_val',tr).html(a.toFixed(2));
 
             // console.log($(this));
-            $('#t_concen').val(tot.toFixed(2));
             $('#total-concentrate').html(tot.toFixed(2)); // update last column value
 
             var t_val = 0;
-            $('.total-val').each(function (index) {
-                var val = $(".t_val")[index].value;
-                if (!isNaN(val) && val.length != 0) {
-                  t_val = parseFloat(t_val) + parseFloat(val);
-                }
+            $('.total-val').each(function () { // iterate over inputs
+                t_val = t_val + parseFloat( $('.total-val').text()) || 0; // parse and add 
             });
+            $('#total_feed').html(t_val.toFixed(2));
 
-           $('#total_feed').html(t_val.toFixed(2));
-           $('#t_feed').val(t_val.toFixed(2));
 
         }).trigger('change'); // trigger input to set initial value in column
-
-
 
         // Fodder Feeding Total: Add the row checkbox-2 to last td
         $(document).on('change', '.checkbox-2', function () {
@@ -829,22 +737,17 @@
                 }
             });
             $('.total-val',tr).html(a.toFixed(2));
-            $('input.t_val',tr).val(a.toFixed(2));
+            $('input.t_val',tr).html(a.toFixed(2));
 
             // console.log($(this));
-            $('#t_hay').val(tot.toFixed(2));
             $('#total-hay').html(tot.toFixed(2)); // update last column value
             //$('.total-val').html(tkg.toFixed(2)); // update last column value
 
             var t_val = 0;
-            $('.total-val').each(function (index) {
-                var val = $(".t_val")[index].value;
-                if (!isNaN(val) && val.length != 0) {
-                  t_val = parseFloat(t_val) + parseFloat(val);
-                }
+            $('.total-val').each(function () { // iterate over inputs
+                t_val = t_val + parseFloat( $('.total-val').text()) || 0; // parse and add 
             });
             $('#total_feed').html(t_val.toFixed(2));
-            $('#t_feed').val(t_val.toFixed(2));
         }).trigger('change'); // trigger input to set initial value in column
 
         // Fodder Feeding Total: Add the row checkbox-2 to last td
@@ -883,19 +786,14 @@
             $('input.t_val',tr).val(a.toFixed(2));
 
             // console.log($(this));
-            $('#t_food').val(tot.toFixed(2));
             $('#total-gFooder').html(tot.toFixed(2)); // update last column value
             
             var t_val = 0;
-            $('.total-val').each(function (index) {
-                var val = $(".t_val")[index].value;
-                if (!isNaN(val) && val.length != 0) {
-                  t_val = parseFloat(t_val) + parseFloat(val);
-                }
+            $('.total-val').each(function () { // iterate over inputs
+                t_val = t_val + parseFloat( $('.total-val').text()) || 0; // parse and add 
             });
-
             $('#total_feed').html(t_val.toFixed(2));
-            $('#t_feed').val(t_val.toFixed(2));
+
 
         }).trigger('change'); // trigger input to set initial value in column
 
@@ -919,13 +817,14 @@
             $('.lactation_milk').each(function (a) { // iterate over inputs
                 var ab = $(".lactation_milk")[a].value;
                 if (!isNaN(ab) && ab.length != 0) {
-                      t_lac1 = parseFloat(t_lac1) + parseFloat(ab);
+                      t_lac1 = parseInt(t_lac1) + parseInt(ab);
                 }
             });
             $('#total_milk').html(t_lac1.toFixed(2));
-            $('#t_milk').val(t_lac1.toFixed(2));
 
         }).trigger('keyup'); // trigger input to set initial value in column
+
+
 
         // Fodder Feeding Total: Add the row checkbox-2 to last td
         $(document).on('keyup', '.lactation-pm', function () {
@@ -945,11 +844,10 @@
             $('.lactation_milk').each(function (a) { // iterate over inputs
                 var ab = $(".lactation_milk")[a].value;
                 if (!isNaN(ab) && ab.length != 0) {
-                      t_lac1 = parseFloat(t_lac1) + parseFloat(ab);
+                      t_lac1 = parseInt(t_lac1) + parseInt(ab);
                 }
             });
             $('#total_milk').html(t_lac1.toFixed(2));
-            $('#t_milk').val(t_lac1.toFixed(2));
 
         }).trigger('keyup'); // trigger input to set initial value in column
 
@@ -1126,30 +1024,30 @@
     //     });
 
     // Initializations
-    // $(function () {
-    //     // initialise Datetimepicker and Sliders
-    //     demo.initDateTimePicker();
-    //     if ($('.slider').length != 0) {
-    //         demo.initSliders();
-    //     }
+    $(function () {
+        // initialise Datetimepicker and Sliders
+        demo.initDateTimePicker();
+        if ($('.slider').length != 0) {
+            demo.initSliders();
+        }
 
-    //     // disable all field
-    //         $("input[type=checkbox]").prop("checked", false);
-    //     $("input")
-    //         .not("[type=checkbox]")
-    //         .not(".datepicker")
-    //         .not("[name=_token]")
-    //         .each(function () {
-    //             $(this).prop('disabled', true);
-    //             $(this).val(""); // reset value
-    //         });
-    //     $("select").prop('disabled', true);
-    //     $("select").val(''); // reset value
-    //     $("select").trigger('change'); // broadcast about value change
-    //     $("button.dropdown-toggle").prop("disabled", true);
-    //     $("button.btn-reset").prop("disabled", true);
+        // disable all field
+/*            $("input[type=checkbox]").prop("checked", false);
+        $("input")
+            .not("[type=checkbox]")
+            .not(".datepicker")
+            .not("[name=_token]")
+            .each(function () {
+                $(this).prop('disabled', true);
+                $(this).val(""); // reset value
+            });
+        $("select").prop('disabled', true);
+        $("select").val(''); // reset value
+        $("select").trigger('change'); // broadcast about value change
+        $("button.dropdown-toggle").prop("disabled", true);
+        $("button.btn-reset").prop("disabled", true);*/
 
-    // });
+    });
 
     $(function () {
 
@@ -1797,25 +1695,14 @@
         },
         success: function(data) {
             if (data.status == 200) {
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-                };
-            toastr.success(data.message);
-            setTimeout(function () {
-               weighing_form.find('.weighing').text('Save Data');
-            }, 2000);
+                $('#message').html('<div class="alert alert-success"> Data Added successfully</div>');
+                setTimeout(function () {
+                 weighing_form.find('.weighing').text('Save Data');
+                 $('#message').hide("slow");
+             }, 2000);
             }
             else{
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-                };
-            toastr.error("Error! Data Not Added, Select Cow from checkbox");
+                $('#message').html('<div class="alert alert-danger">Failed To Add Data</div>');
             }
         }
     });
@@ -1828,24 +1715,14 @@
         },
         success: function(data) {
             if (data.status == 200) {
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-                };
-                toastr.success(data.message);
-                  setTimeout(function () {
-                      sickness_form.find('.sickness').text('Save Data');
-                  }, 2000);
-            }else{
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-              };
-              toastr.error("Error! Data Not Added");
+                $('#sickness_message').html('<div class="alert alert-success"> Data Added successfully</div>');
+                setTimeout(function () {
+                 sickness_form.find('.sickness').text('Save Data');
+                 $('#sickness_message').hide("slow");
+             }, 2000);
+            }
+            else{
+                $('#sickness_message').html('<div class="alert alert-danger">Failed To Add Data</div>');
             }
         }
     });
@@ -1858,24 +1735,14 @@
         },
         success: function(data) {
             if (data.status == 200) {
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-                };
-                toastr.success(data.message);
-                  setTimeout(function () {
-                      heating_form.find('.heating').text('Save Data');
-                  }, 2000);
-            }else{
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-              };
-              toastr.error("Error! Data Not Added");
+                $('#heating_message').html('<div class="alert alert-success"> Data Added successfully</div>');
+                setTimeout(function () {
+                 heating_form.find('.heating').text('Save Data');
+                 $('#heating_message').hide("slow");
+             }, 2000);
+            }
+            else{
+                $('#heating_message').html('<div class="alert alert-danger">Failed To Add Data</div>');
             }
         }
     });
@@ -1888,24 +1755,14 @@
         },
         success: function(data) {
             if (data.status == 200) {
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-                };
-                toastr.success(data.message);
-                  setTimeout(function () {
-                     pregnancy_form.find('.pregnancy').text('Save Data');
-                  }, 2000);
-            }else{
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-              };
-              toastr.error("Error! Data Not Added");
+                $('#pregnancy_message').html('<div class="alert alert-success"> Data Added successfully</div>');
+                setTimeout(function () {
+                 pregnancy_form.find('.pregnancy').text('Save Data');
+                 $('#pregnancy_message').hide("slow");
+             }, 2000);
+            }
+            else{
+                $('#pregnancy_message').html('<div class="alert alert-danger">Failed To Add Data</div>');
             }
         }
     });
@@ -1918,24 +1775,14 @@
         },
         success: function(data) {
             if (data.status == 200) {
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-                };
-                toastr.success(data.message);
-                  setTimeout(function () {
-                    deworming_form.find('.deworming').text('Save Data');
-                  }, 2000);
-            }else{
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-              };
-              toastr.error("Error! Data Not Added");
+                $('#deworming_message').html('<div class="alert alert-success"> Data Added successfully</div>');
+                setTimeout(function () {
+                 deworming_form.find('.deworming').text('Save Data');
+                 $('#deworming_message').hide("slow");
+             }, 2000);
+            }
+            else{
+                $('#deworming_message').html('<div class="alert alert-danger">Failed To Add Data</div>');
             }
         }
     });
@@ -1948,24 +1795,14 @@
         },
         success: function(data) {
             if (data.status == 200) {
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-                };
-                toastr.success(data.message);
-                  setTimeout(function () {
-                    vaccination_form.find('.vaccination').text('Save Data');
-                  }, 2000);
-            }else{
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-              };
-              toastr.error("Error! Data Not Added");
+                $('#vaccination_message').html('<div class="alert alert-success"> Data Added successfully</div>');
+                setTimeout(function () {
+                 vaccination_form.find('.vaccination').text('Save Data');
+                 $('#vaccination_message').hide("slow");
+             }, 2000);
+            }
+            else{
+                $('#vaccination_message').html('<div class="alert alert-danger">Failed To Add Data</div>');
             }
         }
     });
@@ -1974,29 +1811,18 @@
     treatment_form.ajaxForm({
         url: '<?php echo base_url() ?>activity/treatment',
         beforeSend: function() {
-            
             treatment_form.find('.treatment').text('Please wait..');
         },
         success: function(data) {
             if (data.status == 200) {
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-                };
-                toastr.success(data.message);
-                  setTimeout(function () {
-                   treatment_form.find('.treatment').text('Save Data');
-                  }, 2000);
-            }else{
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-              };
-              toastr.error("Error! Data Not Added");
+                $('#treatment_message').html('<div class="alert alert-success"> Data Added successfully</div>');
+                setTimeout(function () {
+                 treatment_form.find('.treatment').text('Save Data');
+                 $('#treatment_message').hide("slow");
+             }, 2000);
+            }
+            else{
+                $('#treatment_message').html('<div class="alert alert-danger">Failed To Add Data</div>');
             }
         }
     });
@@ -2009,85 +1835,16 @@
         },
         success: function(data) {
             if (data.status == 200) {
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-                };
-                toastr.success(data.message);
-                  setTimeout(function () {
-                   supplier_form.find('.supplier').text('Save Data');
-                  }, 2000);
-            }else{
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-              };
-              toastr.error("Error!! Supplier Data Not Added");
+                $('#supplier_message').html('<div class="alert alert-success"> Data Added successfully</div>');
+                setTimeout(function () {
+                 supplier_form.find('.supplier').text('Save Data');
+                 $('#supplier_message').hide("slow");
+             }, 2000);
             }
-        }
-    });
-
-    var lactation_form = $('form#lactation-form');
-    lactation_form.ajaxForm({
-        url: '<?php echo base_url() ?>lactation/save_lactation',
-        beforeSend: function() {
-            lactation_form.find('.save_lactation').text('Please wait..');
-        },
-        success: function(data) {
-            if (data.status == 200) {
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-                };
-                toastr.success(data.message);
-                  setTimeout(function () {
-                   lactation_form.find('.save_lactation').text('Save Data');
-                  }, 2000);
-            }else if(data.status == 400){
-                toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 2000
-              };
-              toastr.error(data.message);
+            else if(data.status == 300){
+                $('#supplier_message').html('<div class="alert alert-danger">Failed To Add Data</div>');
             }
         }
     });
 
 </script>
-<script>
-    function Wo_CheckUsername(username) {
-  var check_container = $('.checking');
-  var check_input = $('#username').val();
-  if(check_input == '') {
-    check_container.empty();
-    return false;
-  }
-  check_container.removeClass('unavailable').removeClass('available').html('<i class="fa fa-clock-o"></i><span id="loading"> Checking <span>.</span><span>.</span><span>.</span></span>');
-  $.get(<?php echo base_url('cow/check_available_id'); ?>, {
-    f: 'check_username',
-    username: username
-  }, function (data) {
-    if(data.status == 200) {
-      check_container.html('<i class="fa fa-check"></i> ' + data.message).removeClass('unavailable').addClass('available');
-    } else if(data.status == 300) {
-      check_container.html('<i class="fa fa-remove"></i> ' + data.message).removeClass('available').addClass('unavailable');
-    } else if(data.status == 400) {
-      check_container.html('<i class="fa fa-remove"></i> ' + data.message).removeClass('available').addClass('unavailable');
-    } else if(data.status == 500) {
-      check_container.html('<i class="fa fa-remove"></i> ' + data.message).removeClass('available').addClass('unavailable');
-    } else if(data.status == 600) {
-      check_container.html('<i class="fa fa-remove"></i> ' + data.message).removeClass('available').addClass('unavailable');
-    }
-  });
-}
-</script>
-</body>
-</html>

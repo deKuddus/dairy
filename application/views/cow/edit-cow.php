@@ -295,7 +295,7 @@
                                         <option class="bs-title-option" value>Choose Father</option>
                                         <?php foreach (fatherCow() as  $f) {?>
                                             <option class="bs-title-option" value='<?php echo  $f->cow_id ?>'
-                                                <?php if($f->cow_id == $cow->fathernal_history) echo "selected"; ?>
+                                                <?php if($f->cow_id == $cow->paternal_history) echo "selected"; ?>
                                                 ><?php echo $f->cow_id; ?></option>
                                             <?php } ?>
                                         </select>

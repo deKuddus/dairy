@@ -36,14 +36,16 @@ class Supplier extends CI_Controller {
 				'address' => $this->input->post('address'),
 				'comments' => $this->input->post('comment')
 			];
-			$this->suppliers->store($input);
-			$data = array(
-				'status' => 200,
-				'message'   => 'success'
-			);
-			header("Content-type: application/json");
-			echo json_encode($data);
-			exit();
+			$success = $this->suppliers->store($input);
+			if($success == true){
+				$data = array(
+					'status' => 200,
+					'message'   => 'Success :) Supplier Data Added'
+				);
+				header("Content-type: application/json");
+				echo json_encode($data);
+				exit();
+			}
 		}
 	}
 

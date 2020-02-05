@@ -10,9 +10,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title"> 
-                        <?php echo branch($branch_id);
-                            ?>
-                        Activity</h4>
+                        <?php echo branch($branch_id); ?> Activity</h4>
                 </div>
                 <div class="card-body">
                     <div class="toolbar">
@@ -49,7 +47,7 @@
                                 <td class="text-center">
                                     <!--<a href="#" class="btn btn-info btn-link btn-icon btn-sm like"><i class="fa fa-heart"></i></a>-->
                                 <!--<a href="http://dairy.appteum.com/activity-log/1/lactation" class="btn btn-info s d-inline-block font-weight-bold"><i class="fa fa-edit">Activity Log</i></a>-->
-                                    <a href="<?php echo base_url('activity/lactation/').$shed->id.'/'.$shed->branch_id; ?>"
+                                    <a href="<?php echo base_url('lactation/lactation/').$shed->id.'/'.$shed->branch_id; ?>"
                                        class="btn btn-primary  d-inline-block font-weight-bold">
                                         <i class="fa fa-edit"></i>
                                         Weight Feeding & Lactation

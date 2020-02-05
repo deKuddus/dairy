@@ -61,6 +61,8 @@ $route['activity/treatment'] = 'activity/treatment';
 $route['activity/medicine/:name'] = 'activity/medicine';
 //lactation,feeding
 $route['activity/lactation/:shed_id/:branch_id'] = 'activity/lactation';
+$route['lactation/ajaxWeightFeed/:shed/:date'] = 'lactation/ajaxWeightFeed';
+$route['lactation/save_lactation'] = 'lactation/save_lactation';
 
 //ratio
 $route['ratio'] = 'ratio/index';

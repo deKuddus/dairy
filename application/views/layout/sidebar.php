@@ -1,7 +1,7 @@
     <div class="sidebar-wrapper">
     	<div class="user">
     		<div class="photo">
-    			<img src="<?php echo base_url() ?>assets/img/favicon.png" alt=""/>
+    			<img src="<?php echo base_url('/') ?>assets/img/favicon.png" alt=""/>
     		</div>
     		<div class="info">
     			<a data-toggle="collapse" href="#collapseExample" class="collapsed">

@@ -22,7 +22,7 @@ class Shed extends CI_Controller {
 	{
 		$data['branches'] = $this->branches->show();
 		$data['content'] = $this->load->view('shed/add-shed',$data,true);
-		$this->load->view('layout/master');
+		$this->load->view('layout/master',$data);
 	}
 
 	public function store()

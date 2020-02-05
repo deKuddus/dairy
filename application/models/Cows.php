@@ -19,11 +19,24 @@ class Cows extends CI_Model {
 
         $this->db->select('*');
         $this->db->from($this->table);
-        $this->db->join('branches', 'branches.id = cows.branch_id');
+        $this->db->join('branches', 'branches.id = cows.branch_id','right');
         $this->db->order_by("branches.id");
         $query = $this->db->get();
         return $query->result();
     }
+
+    //     public function show(){
+
+    //     $this->db->select('cows.*,others_activity.*,branches.name')->from($this->table);
+    //     $this->db->join('others_activity','cows.cow_id = others_activity.cows_id','right' );
+    //     $this->db->join('branches', 'branches.id = cows.branch_id','right');
+    //     $this->db->order_by('others_activity.id','desc');
+    //     $this->db->limit(1);
+    //     $this->db->order_by("branches.id");
+    //     $query = $this->db->get();
+    //     return $query->result();
+    // }
+
 
     public function store($image_name){
         $data = array(
@@ -136,7 +149,11 @@ class Cows extends CI_Model {
 
     public function details($cow_id)
     {
-        $query =  $this->db->get_where($this->table, array('cow_id' => $cow_id));;
+        $this->db->select('cows.*,others_activity.*')->from($this->table)->where(['cow_id' => $cow_id]);
+        $this->db->join('others_activity','cows.cow_id = others_activity.cows_id','right' );
+        $this->db->order_by('others_activity.id','desc');
+        $this->db->limit(1);
+        $query =  $this->db->get();
         return $query->result();
     }
 
@@ -154,6 +171,8 @@ class Cows extends CI_Model {
         return  $query->result();
     }
 
-
-
+    public function get_cows_others_activity_by_id($cow_id){
+     $query = $this->db->select('*')->from('others_activity')->where('cows_id',$cow_id)->order_by('cows_id','desc')->limit(1)->get();
+     return $query->result(); 
+    }
 }

@@ -1,50 +1,96 @@
 <?php
 class Activities extends CI_Model {
  
- 	protected $weighing_table = 'weighing';
- 	protected $sickness_table = 'sickness';
- 	protected $heating_table = 'heating';
- 	protected $pregnancy_table = 'pregnancy';
- 	protected $deworming_table = 'deworming';
- 	protected $medicine = "medicine";
- 	protected $vaccination = "vaccination";
- 	protected $treatment = "treatment";
+ 	protected $table_others_activity = 'others_activity';
+ 	protected $medicine = 'medicine';
 
-    public  function weighing($data)
+
+    public  function insert_weighing($data)
 	{
-		$this->db->insert($this->weighing_table, $data);
+		if($this->db->insert($this->table_others_activity, $data)){
+			return true;
+		}
 	}
 
-	public  function sickness($data)
+	public  function update_weighing($cow_id,$data)
 	{
-		$this->db->insert($this->sickness_table, $data);
+		if($this->db->where(['cows_id'=>$cow_id])->update($this->table_others_activity,$data)){
+			return true;
+		}
+	}
+	public  function insert_sickness($data)
+	{
+		if($this->db->insert($this->table_others_activity, $data)){
+			return true;
+		}
+	}
+	public  function update_sickness($data)
+	{
+		if($this->db->where(['cows_id'=>$cow_id])->update($this->table_others_activity,$data)){
+			return true;
+		}
+	}
+	public  function insert_heating($data)
+	{
+		if($this->db->insert($this->table_others_activity, $data)){
+			return true;
+		}
+	}
+	public  function update_heating($data)
+	{
+		if($this->db->where(['cows_id'=>$cow_id])->update($this->table_others_activity,$data)){
+			return true;
+		}
+	}
+	public  function insert_pregnancy($data)
+	{
+		if($this->db->insert($this->table_others_activity, $data)){
+			return true;
+		}
+	}
+	public  function update_pregnancy($data)
+	{
+		if($this->db->where(['cows_id'=>$cow_id])->update($this->table_others_activity,$data)){
+			return true;
+		}
+	}
+	public  function insert_deworming($data)
+	{
+		if($this->db->insert($this->table_others_activity, $data)){
+			return true;
+		}
+	}
+	public  function update_deworming($data)
+	{
+		if($this->db->where(['cows_id'=>$cow_id])->update($this->table_others_activity,$data)){
+			return true;
+		}
 	}
 
-	public  function heating($data)
+	public  function insert_vaccination($data)
 	{
-		$this->db->insert($this->heating_table, $data);
+		if($this->db->insert($this->table_others_activity, $data)){
+			return true;
+		}
 	}
-
-	public  function pregnancy($data)
+	public  function update_vaccination($data)
 	{
-		$this->db->insert($this->pregnancy_table, $data);
+		if($this->db->where(['cows_id'=>$cow_id])->update($this->table_others_activity,$data)){
+			return true;
+		}
 	}
-
-	public  function deworming($data)
+	public  function insert_treatment($data)
 	{
-		$this->db->insert($this->deworming_table, $data);
+		if($this->db->insert($this->table_others_activity, $data)){
+			return true;
+		}
 	}
-
-	public  function vaccination($data)
+	public  function update_treatment($data)
 	{
-		$this->db->insert($this->vaccination, $data);
+		if($this->db->where(['cows_id'=>$cow_id])->update($this->table_others_activity,$data)){
+			return true;
+		}
 	}
-
-	public  function treatment($data)
-	{
-		$this->db->insert($this->treatment, $data);
-	}
-
 
 	public  function medicine($medicine_name)
 	{
@@ -55,4 +101,12 @@ class Activities extends CI_Model {
 		echo json_encode($result->result(),true); 
 	}
 
+	public function check_todays_activity($cow_id,$date){
+		$query = $this->db->select('cows_id')->from($this->table_others_activity)->where(['cow_id'=>$cow_id,'created_at'=>$date])->get();
+		if(!empty($query->result())){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

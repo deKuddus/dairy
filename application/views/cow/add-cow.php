@@ -20,6 +20,7 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="cow_id" name="cow_id" placeholder="cow id" value=""/>
                                         <?php echo form_error('cow_id', '<p class="text-danger">', '</p>'); ?>
+                                        <span class="help-block checking"></span> 
                                     </div>
                                 </div>
                                 <div class="col-sm-2 label-on-right">

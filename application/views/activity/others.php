@@ -88,7 +88,7 @@
                                                 <td class="td-actions text-center">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input class="form-check-input enable-row" type="checkbox" name="cow_id[]"value="<?php echo $cow->cow_id; ?>">
+                                                            <input class="form-check-input enable-row weighing_cowid" type="checkbox" name="cow_id[]"  value="<?php echo $cow->cow_id; ?>">
                                                             <span class="form-check-sign">
                                                               <span class="check"></span>
                                                             </span>

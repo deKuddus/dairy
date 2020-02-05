@@ -36,8 +36,8 @@
                             <!--<th>Purchased</th>-->
                             <!--<th>Breeding Status</th>-->
                             <!--<th>Breeding Percentage</th>-->
-                            <th>Heat</th>
                             <th>Lactation</th>
+                            <th>Heat</th>
                             <th>Pregnancy</th>
                             <th colspan="2" class="disabled-sorting text-center">Actions</th>
                         </tr>
@@ -57,7 +57,9 @@
                                         }
                                     ?>    
                                 </td>
-                                <td><a href="<?php echo base_url('cow/details/'.$cow->cow_id); ?>" class="btn btn-outline-default"><span style="margin-top:2px;"><?php echo $cow->cow_id ?></span></a>
+                                <td>
+                                    <a href="<?php echo base_url('cow/details/'.$cow->cow_id); ?>" class="btn btn-outline-default"><span style="margin-top:2px;"><?php echo $cow->cow_id ?></span>
+                                    </a>
                                 </td>
                                 <td> 
                                     <?php foreach ($genders as $gender) {
@@ -66,10 +68,15 @@
                                             }
                                         } ?> 
                                 </td>
-                                <td>Calf</td>
-                                <td> No </td>
-                                <td> No </td>
-                                <td> No </td>
+                                <td><?php echo calculate_age_class($cow->gender,$cow->dob); ?></td>
+                                <td> <?php echo $cow->last_lactation; ?> </td>
+                                <?php if(!empty($others_activity)){ foreach ($others_activity as $activity) {?>
+                                    <td> <?php echo isset($activity->inHeat)?$activity->inHeat:'no'; ?> </td>
+                                    <td> <?php echo isset($activity->isPregnant)?$activity->isPregnant:'no'; ?> </td>
+                                <?php }}else{?>
+                                    <td>no</td>
+                                    <td>no</td>
+                                <?php } ?>
                                 <td class="text-right">
                                     <a href="<?php echo base_url('cow/edit/'.$cow->cow_id); ?>"
                                     class="btn btn-warning btn-link btn-icon btn-sm edit"><i class="fa fa-edit"></i></a>
@@ -80,21 +87,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="10">
-                                    &nbsp;
-                                </td>
+                                <td colspan="10">&nbsp;</td>
                             </tr>
-                        <?php } ?>
-<!--  
- 
-<tr>
-    <td colspan="10">
-        &nbsp;
-    </td>
-</tr>
- -->
-
-                                
+                        <?php } ?>         
                         </tbody>
                     </table>
                 </div>

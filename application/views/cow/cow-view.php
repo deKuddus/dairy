@@ -1,5 +1,3 @@
-
-
 <div class="content">
     <div class="printarea">
         <div class="d-none d-print-block col-10 text-center mx-auto">
@@ -18,10 +16,10 @@
                             <div class="toolbar">
                                 <!--        Here you can write extra buttons/actions for tde toolbar              -->
                                 <h5 class="d-inline-block">Cow Profile</h5>
-                                <a href="" class=" pull-right btn btn-info">Add New Cow</a>
+                                <a href="<?php echo base_url('cow/add') ?>" class=" pull-right btn btn-info">Add New Cow</a>
 
-                                <a href="" onclick="return confirm('Are you sure? tde data will be DELETED!')" class="pull-right btn btn-danger remove d-inline-block mx-2"> Delete </a>
-                                 <a href="" class="pull-right btn btn-warning edit d-inline-block mx-2"> Edit </a>
+                                <a href="<?php echo base_url('cow/delete/'.$id) ?>" onclick="return confirm('Are you sure? tde data will be DELETED!')" class="pull-right btn btn-danger remove d-inline-block mx-2"> Delete </a>
+                                 <a href="<?php echo base_url('cow/edit/'.$id) ?>" class="pull-right btn btn-warning edit d-inline-block mx-2"> Edit </a>
                                 <a href="" class="btn btn-info pull-right mx-2">Excel <i><img src="http://dairy.octoriz.com/svg/download.svg" class="svg-button"></img></i></a>
                                 <a href="javascript:void(0);" onclick="window.print();" class="btn btn-info pull-right mx-2">Print</a>
                             </div>
@@ -104,24 +102,36 @@
                                             <td class="text-center">
                                                 <?php 
                                                 $age = age($cow->dob);
-                                               /* echo $age;*/
-                                                if($age > 3){
-                                                    echo strtoupper("<b>adult</b>");
-                                                }elseif($age < 3 && $age > 2){
-                                                    echo strtoupper("<b>calf</b>");
-                                                }elseif($age<1){
-                                                    echo strtoupper("<b>heifer</b>");
-                                                }
+
+                                                $gender_c = gender($cow->gender);
+                                               
+                                                  if($age > 2 && $gender_c == 'female'){
+
+                                                    echo  strtoupper("cow");
+
+                                                  }elseif($age > 1 && $gender_c == 'male'){
+
+                                                    echo strtoupper("bull");
+
+                                                  }elseif($age < 2 && $age > 1 && $gender_c == 'female'){
+
+                                                    echo strtoupper("heifer");
+
+                                                  }elseif($age < 1){
+
+                                                    echo strtoupper("calf");
+
+                                                  }
                                                 ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-center font-weight-bold">Last Deworimg</td>
-                                            <td class="text-center">None</td>
+                                            <td class="text-center"><?php echo $cow->deworming_comments; ?></td>
                                         </tr>
                                         <tr>
                                             <td class="text-center font-weight-bold">Last Sickness</td>
-                                            <td class="text-center">05/03/2019</td>
+                                            <td class="text-center"><?php echo $cow->last_sick_date; ?></td>
                                         </tr>
 
                                     </table>
@@ -138,7 +148,7 @@
                                     </tr>
                                     <tr>
                                         <td class="text-center font-weight-bold">Total Lactation</td>
-                                        <td class="text-center">247 KGs</td>
+                                        <td class="text-center"><?php echo total_lactation($cow->lactation_am,$cow->lactation_pm); ?> KGs</td>
                                     </tr>
                                     <tr>
                                         <td class="text-center font-weight-bold">Purchased</td>
@@ -158,7 +168,7 @@
 
                                     <tr>
                                         <td class="text-center font-weight-bold">Health Status</td>
-                                        <td class="text-center"> Sick </td>
+                                        <td class="text-center"> <?php echo isset($cow->isSick)?$cow->isSick:"None"; ?></td>
                                     </tr>
                                     <tr>
                                         <td class="text-center font-weight-bold">Breeding Percentage</td>
@@ -167,23 +177,25 @@
 
                                     <tr>
                                         <td class="text-center font-weight-bold">Heat</td>
-                                        <td class="text-center"> No                                     </td>
+                                        <td class="text-center"> <?php echo isset($cow->inHeat)?$cow->inHeat:"None"; ?> </td>
                                     </tr>
                                     <tr>
                                         <td class="text-center font-weight-bold">Lactation</td>
-                                        <td class="text-center">                                            Yes </td>
+                                        <td class="text-center"><?php if(!empty($cow->last_lactation)){
+                                            echo "Yes";
+                                        }else{ echo "No";} ?></td>
                                     </tr>
                                     <tr>
                                         <td class="text-center font-weight-bold">Pregnancy</td>
-                                        <td class="text-center"> No </td>
+                                        <td class="text-center"> <?php echo isset($cow->isPregnant)?$cow->isPregnant:"None"; ?> </td>
                                     </tr>
                                     <tr>
                                         <td class="text-center font-weight-bold">Last Pregnancy</td>
-                                        <td class="text-center">None</td>
+                                        <td class="text-center"><?php echo $cow->last_pregnancy_date; ?></td>
                                     </tr>
                                     <tr>
                                         <td class="text-center font-weight-bold">Last Vaccination</td>
-                                        <td class="text-center">None</td>
+                                        <td class="text-center"><?php echo $cow->last_vaccination_date; ?></td>
                                     </tr>
                                 </table>
 

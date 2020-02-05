@@ -14,7 +14,7 @@
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
                                         <p class="card-category">Total Cattle</p>
-                                        <p class="card-title">14</p>
+                                        <p class="card-title"><?php echo $total_cattle; ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
                                         <p class="card-category">Milking Cows</p>
-                                        <p class="card-title">10</p>
+                                        <p class="card-title"><?php echo $milking_cow; ?></p>
                                     </div>
                                 </div>
 
@@ -70,7 +70,7 @@
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
                                         <p class="card-category">Number Of Heifers</p>
-                                        <p class="card-title">1</p>
+                                        <p class="card-title"><?php echo $total_heifers; ?></p>
                                     </div>
                                 </div>
 
@@ -99,7 +99,7 @@
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
                                         <p class="card-category">Number Of Bulls</p>
-                                        <p class="card-title">2</p>
+                                        <p class="card-title"><?php echo $total_bulls; ?></p>
                                     </div>
                                 </div>
 
@@ -157,7 +157,7 @@
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
                                         <p class="card-category">Lactation Yesterday</p>
-                                        <p class="card-title">0 ltrs</p>
+                                        <p class="card-title"><?php echo isset($last_day_lactations)?$last_day_lactations:0; ?> ltrs</p>
                                     </div>
                                 </div>
 
@@ -186,7 +186,7 @@
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
                                         <p class="card-category">Green Fodder</p>
-                                        <p class="card-title">14.83 kgs</p>
+                                        <p class="card-title"><?php echo isset($tomorrow_green_fooder)?$tomorrow_green_fooder:0; ?> kgs</p>
                                     </div>
                                 </div>
 
@@ -215,7 +215,7 @@
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
                                         <p class="card-category">Hay</p>
-                                        <p class="card-title">10.60 kgs</p>
+                                        <p class="card-title"><?php echo isset($hay_for_tomorrow)?$hay_for_tomorrow:0; ?> kgs</p>
                                     </div>
                                 </div>
 
@@ -244,7 +244,7 @@
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
                                         <p class="card-category">Concentrate</p>
-                                        <p class="card-title">9.75 kgs</p>
+                                        <p class="card-title"><?php  echo isset($concentrate_for_tomorrow)?$concentrate_for_tomorrow:0; ?> kgs</p>
                                     </div>
                                 </div>
 
@@ -273,7 +273,7 @@
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
                                         <p class="card-category">Lactation Today</p>
-                                        <p class="card-title">0 ltrs</p>
+                                        <p class="card-title"><?php echo isset($today_lactations)?$today_lactations:0; ?> ltrs</p>
                                     </div>
                                 </div>
 
@@ -531,3 +531,5 @@
 
 </div>
 </div>
+
+

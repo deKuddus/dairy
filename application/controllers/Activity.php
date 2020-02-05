@@ -42,166 +42,258 @@ class Activity extends CI_Controller {
 
 	public  function weighing()
 	{
+		$date = str_replace('/', '-',$_POST['date']);
 		for($counter = 0; $counter < sizeof($_POST["cow_id"]); $counter++){
 			 $data = [
-			 	'cow_id' => $_POST['cow_id'][$counter],
-			 	'weight' => $_POST['weight'][$counter],
-			 	'created_at' => str_replace('/', '-',$_POST['date'])
+			 	'cows_id' => $_POST['cow_id'][$counter],
+			 	'weighing' => $_POST['weight'][$counter],
+			 	'created_at' => $date
 			 ];
-			 $this->activities->weighing($data);
+			 if($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == false){
+			 	$success = $this->activities->insert_weighing($data);
+			 }elseif($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == true){
+			 	$data = [
+				 	'weighing' => $_POST['weight'][$counter],
+				 	'created_at' => $date
+				];
+				$success = $this->activities->update_weighing($_POST['cow_id'][$counter],$data);
+			 }
 		}
 
-		$data = array(
-			'status' => 200,
-			'message'   => 'success'
-		);
-		header("Content-type: application/json");
-        echo json_encode($data);
-        exit();
+		if($success == true){
+			$data = array(
+				'status' => 200,
+				'message'   => 'Success! Data Added'
+			);
+			header("Content-type: application/json");
+	        echo json_encode($data);
+	        exit();
+		}
 	}
 
 	public  function sickness()
 	{
+		$date = str_replace('/', '-',$_POST['date']);
 		for($counter = 0; $counter < sizeof($_POST["cow_id"]); $counter++){
 			 $data = [
-			 	'cow_id' => $_POST['cow_id'][$counter],
+			 	'cows_id' => $_POST['cow_id'][$counter],
 			 	'isSick' => $_POST['isSick'][$counter],
-			 	'description' => $_POST['description'][$counter],
+			 	'sick_description' => $_POST['description'][$counter],
+			 	'last_sick_date' => str_replace('/', '-',$_POST['date']),
 			 	'created_at' => str_replace('/', '-',$_POST['date'])
 			 ];
-			 $this->activities->sickness($data);
+			  if($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == false){
+			 	$success = $this->activities->insert_sickness($data);
+			 }elseif($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == true){
+			 	$data = [
+				 	'isSick' => $_POST['isSick'][$counter],
+				 	'sick_description' => $_POST['description'][$counter],
+				 	'last_sick_date' => str_replace('/', '-',$_POST['date']),
+				 	'created_at' => str_replace('/', '-',$_POST['date'])
+				];
+				$success = $this->activities->update_sickness($_POST['cow_id'][$counter],$data);
+			 }
 		}
-
-		$data = array(
-			'status' => 200,
-			'message'   => 'success'
-		);
-		header("Content-type: application/json");
-        echo json_encode($data);
-        exit();
+		if($success == true){
+			$data = array(
+				'status' => 200,
+				'message'   => 'Success! Data Added'
+			);
+			header("Content-type: application/json");
+	        echo json_encode($data);
+	        exit();
+		}
 	}
 
 	public  function heating()
 	{
+		$date = str_replace('/', '-',$_POST['date']);
 		for($counter = 0; $counter < sizeof($_POST["cow_id"]); $counter++){
 			 $data = [
-			 	'cow_id' => $_POST['cow_id'][$counter],
+			 	'cows_id' => $_POST['cow_id'][$counter],
 			 	'inHeat' => $_POST['inHeat'][$counter],
 			 	'created_at' => str_replace('/', '-',$_POST['date'])
 			 ];
-			 $this->activities->heating($data);
+			  if($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == false){
+			 	$success = $this->activities->insert_heating($data);
+			 }elseif($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == true){
+			 	$data = [
+				 	'inHeat' => $_POST['isSick'][$counter],
+				 	'created_at' => str_replace('/', '-',$_POST['date'])
+				];
+				$success = $this->activities->update_heating($_POST['cow_id'][$counter],$data);
+			 }
 		}
 
-		$data = array(
-			'status' => 200,
-			'message'   => 'success'
-		);
-		header("Content-type: application/json");
-        echo json_encode($data);
-        exit();
+		if($success == true){
+			$data = array(
+				'status' => 200,
+				'message'   => 'Success! Data Added'
+			);
+			header("Content-type: application/json");
+	        echo json_encode($data);
+	        exit();
+		}
 	}
 
 	public  function pregnancy()
 	{
+		$date = str_replace('/', '-',$_POST['date']);
 		for($counter = 0; $counter < sizeof($_POST["cow_id"]); $counter++){
 			 $data = [
-			 	'cow_id' => $_POST['cow_id'][$counter],
+			 	'cows_id' => $_POST['cow_id'][$counter],
 			 	'isPregnant' => $_POST['isPregnant'][$counter],
+			 	'last_pregnancy_date' => str_replace('/', '-',$_POST['date']),
 			 	'created_at' => str_replace('/', '-',$_POST['date'])
 			 ];
-			 $this->activities->pregnancy($data);
+			if($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == false){
+			 	$success = $this->activities->insert_pregnancy($data);
+			 }elseif($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == true){
+			 	$data = [
+				 	'isPregnant' => $_POST['isSick'][$counter],
+				 	'last_pregnancy_date' => str_replace('/', '-',$_POST['date']),
+				 	'created_at' => str_replace('/', '-',$_POST['date'])
+				];
+				$success = $this->activities->update_pregnancy($_POST['cow_id'][$counter],$data);
+			 }
 		}
 
-		$data = array(
-			'status' => 200,
-			'message'   => 'success'
-		);
-		header("Content-type: application/json");
-        echo json_encode($data);
-        exit();
+		if($success == true){
+			$data = array(
+				'status' => 200,
+				'message'   => 'Success! Data Added'
+			);
+			header("Content-type: application/json");
+	        echo json_encode($data);
+	        exit();
+		}
 	}
 
 	public  function deworming()
 	{
+		$date = str_replace('/', '-',$_POST['date']);
 		for($counter = 0; $counter < sizeof($_POST["cow_id"]); $counter++){
-			 $data = [
-			 	'cow_id' => $_POST['cow_id'][$counter],
-			 	'medicine_id' => $_POST['medicine_id'][$counter],
-			 	'quantity' => $_POST['deworming_quantity'][$counter],
-			 	'comments' => $_POST['comment'][$counter],
+			$data = [
+			 	'cows_id' => $_POST['cow_id'][$counter],
+			 	'deworming_medicine_id' => $_POST['medicine_id'][$counter],
+			 	'deworming_medicine_quantity' => $_POST['deworming_quantity'][$counter],
+			 	'deworming_comments' => $_POST['comment'][$counter],
 			 	'created_at' => str_replace('/', '-',$_POST['date'])
-			 ];
-			 $this->activities->deworming($data);
+			];
+			if($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == false){
+			 	$success = $this->activities->insert_deworming($data);
+			 }elseif($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == true){
+			 	$data = [
+				 	'deworming_medicine_id' => $_POST['medicine_id'][$counter],
+				 	'deworming_medicine_quantity' => $_POST['deworming_quantity'][$counter],
+				 	'deworming_comments' => $_POST['comment'][$counter],
+				 	'created_at' => str_replace('/', '-',$_POST['date'])
+				];
+				$success = $this->activities->update_deworming($_POST['cow_id'][$counter],$data);
+			 }
 		}
-
-		$data = array(
-			'status' => 200,
-			'message'   => 'success'
-		);
-		header("Content-type: application/json");
-        echo json_encode($data);
-        exit();
+		if($success == true){
+			$data = array(
+				'status' => 200,
+				'message'   => 'Success! Data Added'
+			);
+			header("Content-type: application/json");
+			echo json_encode($data);
+			exit();
+		}
 	}
 
 	public  function vaccination()
 	{
+		$date = str_replace('/', '-',$_POST['date']);
 		for($counter = 0; $counter < sizeof($_POST["cow_id"]); $counter++){
 			 $data = [
-			 	'cow_id' => $_POST['cow_id'][$counter],
-			 	'medicine_id' => $_POST['medicine_id'][$counter],
-			 	'quantity' => $_POST['deworming_quantity'][$counter],
-			 	'comments' => $_POST['comment'][$counter],
+			 	'cows_id' => $_POST['cow_id'][$counter],
+			 	'vaccination_medicine_id' => $_POST['medicine_id'][$counter],
+			 	'vaccination_quantity' => $_POST['deworming_quantity'][$counter],
+			 	'vaccination_comments' => $_POST['comment'][$counter],
+			 	'last_vaccination_date' => str_replace('/', '-',$_POST['date']),
 			 	'created_at' => str_replace('/', '-',$_POST['date'])
 			 ];
-			 $this->activities->vaccination($data);
+			 if($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == false){
+			 	$success = $this->activities->insert_vaccination($data);
+			 }elseif($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == true){
+			 	$data = [
+				 	'vaccination_medicine_id' => $_POST['medicine_id'][$counter],
+				 	'vaccination_quantity' => $_POST['deworming_quantity'][$counter],
+				 	'vaccination_comments' => $_POST['comment'][$counter],
+				 	'last_vaccination_date' => str_replace('/', '-',$_POST['date']),
+				 	'created_at' => str_replace('/', '-',$_POST['date'])
+			 	];
+			 	$success = $this->activities->update_vaccination($_POST['cow_id'][$counter],$data);
+			 }
 		}
 
-		$data = array(
-			'status' => 200,
-			'message'   => 'success'
-		);
-		header("Content-type: application/json");
-        echo json_encode($data);
-        exit();
+		if($success == true){
+			$data = array(
+				'status' => 200,
+				'message'   => 'Success! Data Added'
+			);
+			header("Content-type: application/json");
+			echo json_encode($data);
+			exit();
+		}
 	}
 
 	public  function treatment()
 	{
+		$date = str_replace('/', '-',$_POST['date']);
 		for($counter = 0; $counter < sizeof($_POST["cow_id"]); $counter++){
 			 $data = [
-			 	'cow_id' => $_POST['cow_id'][$counter],
-			 	'medicine_id' => $_POST['medicine_id'][$counter],
-			 	'disease_id' => $_POST['disease_id'][$counter],
-			 	'tests' => $_POST['tests'][$counter],
-			 	'quantity' => $_POST['medicine_quantity'][$counter],
-			 	'doctor_name' => $_POST['doctor_name'][$counter],
-			 	'doctor_contact' => $_POST['doctor_contact'][$counter],
-			 	'doctor_visit' => $_POST['doctor_visit'][$counter],
-			 	'remarks' => $_POST['remarks'][$counter],
+			 	'cows_id' => $_POST['cow_id'][$counter],
+			 	'treatment_medicine_id' => $_POST['medicine_id'][$counter],
+			 	'treatment_disease_id' => $_POST['disease_id'][$counter],
+			 	'treatment_tests' => $_POST['tests'][$counter],
+			 	'treatment_medicine_quantity' => $_POST['medicine_quantity'][$counter],
+			 	'treatment_doctor_name' => $_POST['doctor_name'][$counter],
+			 	'treatment_doctor_contact' => $_POST['doctor_contact'][$counter],
+			 	'treatment_doctor_visit' => $_POST['doctor_visit'][$counter],
+			 	'treatment_remarks' => $_POST['remarks'][$counter],
 			 	'created_at' => str_replace('/', '-',$_POST['date'])
 			 ];
-			 $this->activities->treatment($data);
+			 if($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == false){
+			 	$success = $this->activities->insert_treatment($data);
+			 }elseif($this->activities->check_todays_activity($_POST['cow_id'][$counter],$date) == true){
+			 	$data = [
+				 	'treatment_medicine_id' => $_POST['medicine_id'][$counter],
+				 	'treatment_disease_id' => $_POST['disease_id'][$counter],
+				 	'treatment_tests' => $_POST['tests'][$counter],
+				 	'treatment_medicine_quantity' => $_POST['medicine_quantity'][$counter],
+				 	'treatment_doctor_name' => $_POST['doctor_name'][$counter],
+				 	'treatment_doctor_contact' => $_POST['doctor_contact'][$counter],
+				 	'treatment_doctor_visit' => $_POST['doctor_visit'][$counter],
+				 	'treatment_remarks' => $_POST['remarks'][$counter],
+				 	'created_at' => str_replace('/', '-',$_POST['date'])
+			 	];
+			 	$success = $this->activities->update_treatment($_POST['cow_id'][$counter],$data);
+			 }
 		}
-
-		$data = array(
-			'status' => 200,
-			'message'   => 'success'
-		);
-		header("Content-type: application/json");
-        echo json_encode($data);
-        exit();
+		if($success == true){
+			$data = array(
+				'status' => 200,
+				'message'   => 'Success! Data Added'
+			);
+			header("Content-type: application/json");
+			echo json_encode($data);
+			exit();
+		}
 	}
 
 
-	public function lactation($shed_id,$branch_id)
-	{
-		$this->load->model('types');
-		$data['types'] = $this->types->show();
-		$data['branch_id'] = $branch_id;
-		$data['shed_id'] = $shed_id;
-		$data['content'] = $this->load->view('activity/lactation',$data,true);
-		$this->load->view('layout/master',$data);
-	}
+	// public function lactation($shed_id,$branch_id)
+	// {
+	// 	$this->load->model('types');
+	// 	$data['types'] = $this->types->show();
+	// 	$data['branch_id'] = $branch_id;
+	// 	$data['shed_id'] = $shed_id;
+	// 	$data['content'] = $this->load->view('activity/lactation',$data,true);
+	// 	$this->load->view('layout/master',$data);
+	// }
 
 
 
@@ -209,6 +301,7 @@ class Activity extends CI_Controller {
 	{
 		return $this->activities->medicine($name);
 	}
+
 
 
 }

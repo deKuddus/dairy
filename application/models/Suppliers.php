@@ -11,7 +11,9 @@ class Suppliers extends CI_Model {
 
 
     public function store($data){
-        $this->db->insert($this->table,$data);
+        if($this->db->insert($this->table,$data)){
+            return true;
+        }
     }
 
     public function supplier_name($name){
